@@ -1,12 +1,15 @@
-import { Outlet } from "react-router-dom";
+import RightSide from "../Components/RightSidebar/RightSide";
+import Sidebar from "../Components/Sidebar/Sidebar";
+import Container from "./Shared/Container";
 
 const Home = () => {
   return (
-    <>
-      <p>Navbar</p>
-      <Outlet />
-      <p>Footer</p>
-    </>
+    <Container>
+      <div className="grid gap-4 md:grid-cols-[16rem_1fr]">
+        <Sidebar />
+        <RightSide />
+      </div>
+    </Container>
   );
 };
 
