@@ -1,42 +1,51 @@
+import { Link } from "react-router-dom";
+
 const navData = [
   {
     id: 1,
     title: "প্রতিষ্ঠান পরিতিচি",
-    children: ["item1 itishas", "item2 biboron"],
+    children: ["পরিচিতি"],
   },
   {
     id: 2,
-    title: "পাঠদান সংক্রান্ত তথ্য",
-    children: ["রুটিন", "পাঠ্যসূচী", "নোটিশ"],
+    title: "শিক্ষক ও কর্মচারীর তথ্য",
+    children: ["শিক্ষকমণ্ডলী", "কর্মচারী"],
   },
   {
     id: 3,
+    title: "পাঠদান সংক্রান্ত তথ্য",
+    children: ["রুটিন", "পাঠ্যসূচী", "নোটিশ"],
+  },
+
+  {
+    id: 4,
     title: "শাখার তথ্য",
-    children: ["item5 itishas", "item6 biboron"],
+    children: ["জাতীয়করণ তথ্য"],
   },
 ];
 const Desktop = () => {
   return (
-    <ul className="relative gap-2 items-center text-lg hidden md:flex">
+    <ul className="relative gap-2 items-center text-base hidden md:flex text-white">
       {" "}
-      <li className="hover:bg-primary-20/30 px-2 py-1  rounded-md text-xl">
-        হোম
-      </li>
+      <Link to="/">
+        <li className="hover:bg-primary-30 py-1 px-2  rounded-md text-base hover:text-black cursor-pointer">
+          হোম
+        </li>
+      </Link>
       {navData.map((item) => (
         <li
           key={item.id}
-          className="cursor-pointer relative group hover:bg-primary-30 py-1 px-2 rounded-md drop-shadow-md"
+          className="cursor-pointer relative group hover:bg-primary-30 py-1 px-2 rounded-md drop-shadow-md hover:text-black"
         >
           {item.title}
 
-          <ul className="scale-y-0 min-w-[10rem] max-w-[20rem] h-0 bg-white overflow-hidden p-2 absolute top-9 left-0 rounded-md drop-shadow-lg transition-all group-hover:transition-all group-hover:h-max group-hover:opacity-100 z-20 group-hover:block group-hover:scale-y-100">
+          <ul className="scale-y-0 min-w-[10rem] max-w-[20rem] h-0 bg-white overflow-hidden p-2 absolute top-9 left-0 rounded-md drop-shadow-lg transition-all group-hover:transition-all group-hover:h-max group-hover:opacity-100  group-hover:block group-hover:scale-y-100 z-[]">
             {item.children.map((child) => (
-              <li
-                key={child}
-                className="hover:bg-primary-20/30 px-2 py-1 text-base rounded-md"
-              >
-                {child}
-              </li>
+              <Link to={`/${child}`} key={child}>
+                <li className="hover:bg-primary-20/30 px-2 py-1 text-base rounded-md">
+                  {child}
+                </li>
+              </Link>
             ))}
           </ul>
         </li>

@@ -6,7 +6,7 @@ const navData = [
   {
     id: 1,
     title: "প্রতিষ্ঠান পরিতিচি",
-    children: ["item1 itishas", "item2 biboron"],
+    children: ["পরিচিতি"],
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const navData = [
   {
     id: 4,
     title: "শাখার তথ্য",
-    children: ["জাতীয়করণ তথ্য", "item6 biboron"],
+    children: ["জাতীয়করণ তথ্য"],
   },
 ];
 
@@ -37,7 +37,7 @@ const Mobile = ({ showNav, handleNavbar }) => {
 
   return (
     <div
-      className={`h-screen w-[70%] bg-zinc-50 shadow-md fixed top-0 right-0 transition-all duration-500 md:hidden z-50 ${
+      className={`min-h-screen w-[70%] bg-zinc-50 shadow-md fixed top-0 right-0 transition-all duration-500 md:hidden z-50 ${
         showNav && "translate-x-[110%]"
       }`}
     >
@@ -78,12 +78,11 @@ const Mobile = ({ showNav, handleNavbar }) => {
             >
               {/* TODO: SUBMENU  */}
               {item.children.map((child) => (
-                <li
-                  className="hover:bg-primary-20 list-none pl-6 py-2 cursor-pointer"
-                  key={child}
-                >
-                  {child}
-                </li>
+                <Link onClick={handleNavbar} to={`/${child}`} key={child}>
+                  <li className="hover:bg-primary-20 list-none pl-6 py-2 cursor-pointer">
+                    {child}
+                  </li>
+                </Link>
               ))}
             </div>
           </div>

@@ -1,8 +1,25 @@
+import { useState } from "react";
 import avatar from "../../assets/man.jpg";
+
+const pricipalTalk = {
+  image: "https://picsum.photos/400/400",
+  talk: ` শিক্ষা, শৃংখলা, সংযম- এই মূলমন্ত্রকে হৃদয়ে লালন করে প্রগতিশীল পৃথিবী
+            গড়ার প্রত্যয়ে ফারিদপুর জেলা স্কুলের ওয়েবসাইটে সকলের প্রতি রইল
+            আন্তরিক অভিনন্দন। ফারিদপুর জেলা এর সকল সদস্য আধুনিক বিজ্ঞান সম্মত
+            তথ্য প্রযুক্তিসমৃদ্ধ ‘ডিজিটাল বাংলাদেশ’ গড়ে তুলতে নিরলসভাবে কাজ করে
+            চলেছে। শ্রেণি শিক্ষার পাশাপাশি সহপাঠ্যক্রমিক কার্যক্রম, সামাজিক ও
+            সাংস্কৃতিক কর্মকাণ্ডেও শিক্ষার্থীরা সমান পারদর্শিতার সাথে অংশগ্রহণ
+            করছে এবং ভবিষ্যতে আলোকিত মানুষ হিসেবে দেশ ও জাতির কল্যাণে তারা
+            সফলতার পরিচয় দেবে বলে আশা করা যায়। ফারিদপুর জেলা এর শিক্ষার্থীদের
+            প্রতি রইল আমার সর্বাঙ্গীণ শুভকামনা। আমি মনেকরি WEBSITE টি
+            শিক্ষক-শিক্ষার্থী-অভিভাবকসহ সকলের জন্য সুফল বয়ে আনবে। এই
+            প্রতিষ্ঠানের সংশ্লিষ্ট সকলকে জানাচ্ছি প্রাণঢালা অভিনন্দন।`,
+};
 const Sidebar = () => {
+  const [showMore, setShowMore] = useState(false);
   return (
-    <div className="bg-primary-10 rounded-md">
-      <div className=" p-5">
+    <div className=" space-y-3 mb-4">
+      <div className="  bg-primary-20 rounded-md p-5">
         <div className="z-10">
           <img
             src={avatar}
@@ -20,6 +37,77 @@ const Sidebar = () => {
           নিশ্বয় আল্লাহ মানুষ এবং জীন সৃষ্টি করেছেন একমাত্র তার ইবাদাত করার
           জন্য। (আল কোরআন)
         </p>
+      </div>
+
+      <div className="bg-primary-20 p-5 rounded-md shadow-md shadow-primary-20">
+        <h1 className="text-2xl font-semibold text-white text-center mb-6">
+          অধ্যক্ষ মহোদয়ের বাণী
+        </h1>
+        <div className="grid gap-5 sm:grid-cols-[1fr_2fr] ">
+          <div>
+            <img
+              src={pricipalTalk.image}
+              alt=""
+              className="mx-auto max-w-full"
+            />
+            <div className="text-center text-zinc-50 mt-3 space-y-1">
+              <h1 className="md:text-xl lg:text-sm font-semibold ">
+                আব্দুল্লাহ আল মামুন
+              </h1>
+              <h1 className="text-sm text-zinc-100 lg:text-xs">অধ্যক্ষ</h1>
+              <h1 className="text-sm text-zinc-100 lg:text-xs">
+                ফরিদপুর জেলা স্কুল ফারিদপুর
+              </h1>
+            </div>
+          </div>
+          <p className="text-sm text-zinc-50 text-justify leading-6">
+            {pricipalTalk.talk.length > 200 && !showMore ? (
+              <>{pricipalTalk.talk.slice(0, 200)}...</>
+            ) : (
+              pricipalTalk.talk
+            )}
+            <button
+              onClick={() => setShowMore(!showMore)}
+              className="border bg-rose-500 border-none text-white py-1 px-2 text-xs rounded-sm ml-3"
+            >
+              {!showMore ? " আরও পড়ুন" : "পড়া শেষ করুণ"}
+            </button>{" "}
+          </p>
+        </div>
+      </div>
+
+      {/* TODO: NOTICE BOARD */}
+      <div className="border-4 rounded-md border-primary-20">
+        <h1 className="bg-primary-20 p-3 text-center text-2xl text-white">
+          নোটিশ বোর্ড 
+        </h1>
+        <div className="grid gap-2 grid-cols-[8rem_1fr] bg-primary-30 py-2 px-1 border-b-2 border-blue-700 border-dotted mb-2">
+          <div className="flex flex-col text-center font-bold text-lg ">
+            <span className="bg-primary-10 text-white">Dec</span>
+            <span className="bg-white">01</span>
+          </div>
+          <p>
+            একাদশ শ্রেণিতে ২০২২-২০২৩ শিক্ষাবর্ষে ভর্তির জন্য প্রয়োজনীয় কাগজপত্র
+          </p>
+        </div>
+        <div className="grid gap-2 grid-cols-[8rem_1fr] bg-primary-30 py-2 px-1 border-b-2 border-blue-700 border-dotted mb-2">
+          <div className="flex flex-col text-center font-bold text-lg ">
+            <span className="bg-primary-10 text-white">Dec</span>
+            <span className="bg-white">01</span>
+          </div>
+          <p>
+            একাদশ শ্রেণিতে ২০২২-২০২৩ শিক্ষাবর্ষে ভর্তির জন্য প্রয়োজনীয় কাগজপত্র
+          </p>
+        </div>
+        <div className="grid gap-2 grid-cols-[8rem_1fr] bg-primary-30 py-2 px-1 border-b-2 border-blue-700 border-dotted mb-2">
+          <div className="flex flex-col text-center font-bold text-lg ">
+            <span className="bg-primary-10 text-white">Dec</span>
+            <span className="bg-white">01</span>
+          </div>
+          <p>
+            একাদশ শ্রেণিতে ২০২২-২০২৩ শিক্ষাবর্ষে ভর্তির জন্য প্রয়োজনীয় কাগজপত্র
+          </p>
+        </div>
       </div>
     </div>
   );
