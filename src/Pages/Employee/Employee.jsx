@@ -30,7 +30,7 @@ const employees = [
 ];
 const Employee = () => {
   return (
-    <div className="mb-2 bg-gradient-to-r from-zinc-300 via-teal-500 to-zinc-400 pb-10">
+    <div className="mb-6 ">
       <Container>
         <h1 className="text-center text-xl sm:text-2xl font-bold bg-primary-20/70 p-2 text-white my-3 rounded-md">
           আমাদের কর্মচারীগণ

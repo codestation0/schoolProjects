@@ -1,6 +1,7 @@
 import { useState } from "react";
 import avatar from "../../assets/man.jpg";
-
+import { FaUserGraduate } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const pricipalTalk = {
   image: "https://picsum.photos/400/400",
   talk: ` শিক্ষা, শৃংখলা, সংযম- এই মূলমন্ত্রকে হৃদয়ে লালন করে প্রগতিশীল পৃথিবী
@@ -108,6 +109,18 @@ const Sidebar = () => {
             একাদশ শ্রেণিতে ২০২২-২০২৩ শিক্ষাবর্ষে ভর্তির জন্য প্রয়োজনীয় কাগজপত্র
           </p>
         </div>
+      </div>
+
+      {/* exams info */}
+      <div className="space-y-3 font-semibold">
+        <Link className="bg-teal-100 flex items-center gap-2 p-2 rounded-md text-lg text-rose-500">
+          <FaUserGraduate />
+          <h3>পরীক্ষার ফলাফল [অভ্যন্তরীণ]</h3>
+        </Link>
+        <Link className="bg-green-100 flex items-center gap-2 p-2 rounded-md text-lg text-rose-500">
+          <FaUserGraduate />
+          <h3>বিগত পরীক্ষার ফলাফল পরিসংখ্যান</h3>
+        </Link>
       </div>
     </div>
   );
