@@ -1,9 +1,9 @@
 const EmployeeCard = ({ employee }) => {
   const { name, designation, img } = employee;
   return (
-    <div className=" bg-gradient-to-r from-zinc-900 via-teal-900 to-zinc-500 rounded-lg shadow-lg overflow-hidden">
-      <div>
-        <img src={img} alt="" className="max-w-full w-full" />
+    <div className=" bg-gradient-to-r from-zinc-900 via-teal-900 to-zinc-500 rounded-lg shadow-lg overflow-hidden max-w-sm w-full mx-auto">
+      <div className="pt-5 pb-3">
+        <img src={img} alt="" className="max-h-44 object-contain mx-auto" />
       </div>
       <div className="text-center p-3 text-zinc-50">
         <h1 className="text-lg font-semibold">{name}</h1>

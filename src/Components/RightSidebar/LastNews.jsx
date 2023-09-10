@@ -25,11 +25,14 @@ const news = [
 ];
 const LastNews = () => {
   return (
-    <div className="grid gap-6 mb-6">
+    <div className=" mb-6 border-4 border-primary-20/70 rounded-md">
+      <h1 className="text-center text-xl sm:text-2xl font-bold bg-primary-20/70 p-2 text-white">
+        সর্বশেষ সংবাদ
+      </h1>
       {news.map((item) => (
         <div
           key={item.id}
-          className="bg-green-500/10 p-4 rounded-md shadow-lg shadow-primary-10/20 border  border-primary-20/20 odd:bg-teal-500/20"
+          className="bg-green-500/10 p-4  shadow-primary-10/20  odd:bg-teal-500/20"
         >
           <h1 className="text-lg font-semibold text-primary-20 mb-3">
             {item.title}

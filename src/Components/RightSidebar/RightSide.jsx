@@ -6,8 +6,8 @@ const RightSide = () => {
     <div className="overflow-hidden z-10">
       <Slider />
       {/* স্কুলের ইতিহাস----------------- */}
-      <div className="my-6 border-4 border-primary-20 rounded-md">
-        <h1 className="bg-primary-20 p-2 text-2xl font-bold text-center mb-2 text-white">
+      <div className="my-6 border-4 border-primary-20/70 rounded-md">
+        <h1 className="bg-primary-20/70 p-2 text-2xl font-bold text-center mb-2 text-white">
           ফরিদপুর জেলা স্কুলের ইতিহাস
         </h1>
         <p className="py-1 px-2 ">
