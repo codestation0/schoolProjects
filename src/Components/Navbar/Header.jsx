@@ -8,8 +8,8 @@ const Header = () => {
         <div className="text-center flex items-center gap-4 justify-between">
           <div className="flex items-center gap-2">
             <img src={logo} alt="logo" className="w-20 " />
-            <div className="hidden sm:block">
-              <h1 className="text-2xl sm:text-3xl font-bold mb-2">
+            <div className="">
+              <h1 className=" sm:text-3xl font-bold mb-2">
                 ফরিদপুর জেলা স্কুল ফরিদপুর
               </h1>
               <p>স্কুল কোড:ঃ ৩৫২৫, কলেজ কোডঃ ৮৩৪৪</p>

@@ -37,15 +37,9 @@ const Mobile = ({ showNav, handleNavbar }) => {
     >
       <MdClose
         onClick={handleNavbar}
-        className="absolute top-1/2 translate-y-1/2 -left-4 bg-rose-500 p-2 text-4xl text-white font-bold rounded-full cursor-pointer"
+        className="absolute top-1/2 -translate-y-2/3 -left-4 bg-rose-500 p-2 text-4xl text-white font-bold rounded-full cursor-pointer"
       />
       <div className="w-full">
-        <Link
-          onClick={handleNavbar}
-          className="hover:bg-primary-20 hover:text-white list-none pl-6 py-2 cursor-pointer w-full block text-xl"
-        >
-          হোম
-        </Link>
         {navData.map((item) => (
           <div key={item.id} className="relative group w-full ">
             <li

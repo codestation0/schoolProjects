@@ -5,6 +5,8 @@ const Notice = () => {
   return (
     <Container>
       <div className="grid gap-2 lg:grid-cols-2">
+        {/* TODO: LAST NEWS  */}
+        <LastNews />
         <div className="border-4 rounded-md border-primary-20/70 mb-8 h-max">
           <h1 className="bg-primary-20/70 p-3 text-center text-2xl text-zinc-900">
             নোটিশ বোর্ড
@@ -39,8 +41,8 @@ const Notice = () => {
               কাগজপত্র
             </p>
           </div>
+          
         </div>
-        <LastNews />
       </div>
     </Container>
   );

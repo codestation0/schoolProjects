@@ -61,7 +61,7 @@ const Sidebar = () => {
               </h1>
             </div>
           </div>
-          <p className="text-sm text-zinc-800 text-justify leading-6 tracking-tighter">
+          <p className="text-sm text-zinc-800 text-justify leading-6 tracking-tighter lg:text-start">
             {pricipalTalk.talk.length > 200 && !showMore ? (
               <>{pricipalTalk.talk.slice(0, 200)}...</>
             ) : (
@@ -113,11 +113,11 @@ const Sidebar = () => {
 
       {/* exams info */}
       <div className="space-y-3 font-semibold">
-        <Link className="bg-teal-100 flex items-center gap-2 p-2 rounded-md text-lg text-rose-500">
+        <Link className="bg-teal-100 flex items-center gap-2 p-2 rounded-md  text-rose-500">
           <FaUserGraduate />
           <h3>পরীক্ষার ফলাফল [অভ্যন্তরীণ]</h3>
         </Link>
-        <Link className="bg-green-100 flex items-center gap-2 p-2 rounded-md text-lg text-rose-500">
+        <Link className="bg-green-100 flex items-center gap-2 p-2 rounded-md text-rose-500">
           <FaUserGraduate />
           <h3>বিগত পরীক্ষার ফলাফল পরিসংখ্যান</h3>
         </Link>

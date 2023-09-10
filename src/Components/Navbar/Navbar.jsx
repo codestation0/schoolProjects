@@ -17,15 +17,10 @@ const Navbar = () => {
     <>
       <Header />
       <TextSlider />
-      <div className="bg-primary-20/80 py-4 w-full relative z-40 drop-shadow-md">
+      <div className="bg-primary-20/80 py-4 w-full relative z-40 drop-shadow-md ">
         <Container>
           <div className="flex justify-center">
-            {/* <Link to={"/"}>
-            <LiaSchoolSolid size={30} />
-          </Link>
-          <Link to={"/notice"} className="text-rose-400 font-bold">
-            নোটিশ
-          </Link> */}
+            {/* TODO: DESKTOP MENU  */}
             <Desktop />
             <Link
               to={"/"}
@@ -39,10 +34,10 @@ const Navbar = () => {
               size={25}
               className="cursor-pointer ml-auto md:hidden text-white mr-2"
             />
-
-            <Mobile showNav={showNav} handleNavbar={handleNavbar} />
           </div>
         </Container>
+        {/* TODO: MOBILE MENU  */}
+        <Mobile showNav={showNav} handleNavbar={handleNavbar} />
       </div>
     </>
   );
