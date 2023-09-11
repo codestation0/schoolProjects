@@ -2,8 +2,13 @@ import { Link } from "react-router-dom";
 const navData = [
   {
     id: 1,
+    title: "অ্যাড নোটিশ",
+    children: ["অ্যাড নোটিশ", "আসিতেছে"],
+  },
+  {
+    id: 41,
     title: "প্রতিষ্ঠান পরিতিচি",
-    children: ["পরিচিতি", "আসিতেছে"],
+    children: ["পরিচিতি", "আসিতেছে", "অ্যাড নোটিশ"],
   },
   {
     id: 2,

@@ -8,6 +8,9 @@ import Employee from "../Pages/Employee/Employee";
 import Notice from "../Pages/Notice/Notice";
 import RoutineList from "../Pages/Routine/RoutineList";
 import ErrorPage from "../Pages/ErrorPage";
+import Signup from "../Pages/Shared/Form/Signup";
+import Signin from "../Pages/Shared/Form/Signin";
+import AddNotice from "../Dashboard/Add-notice/AddNotice";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +42,19 @@ const router = createBrowserRouter([
         path: "/রুটিন",
         element: <RoutineList />,
       },
+      {
+        path: "/অ্যাড নোটিশ",
+        element: <AddNotice />,
+      },
     ],
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/sign-in",
+    element: <Signin />,
   },
 ]);
 
