@@ -1,5 +1,4 @@
 import Slider from "../Slider/Slider";
-import LastNews from "./LastNews";
 
 const RightSide = () => {
   return (
@@ -18,9 +17,6 @@ const RightSide = () => {
           হয়।
         </p>
       </div>
-
-      {/* সর্বশেষ  সংবাদ  */}
-      <LastNews />
     </div>
   );
 };

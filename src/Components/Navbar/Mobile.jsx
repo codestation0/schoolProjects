@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiChevronRight, BiChevronDown } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ const navData = [
   {
     id: 3,
     title: "পাঠদান সংক্রান্ত তথ্য",
-    children: ["শাখার তথ্য", "রুটিন", "পাঠ্যসূচী", "নোটিশ"],
+    children: ["নোটিশ", "রুটিন", "শাখার তথ্য", "পাঠ্যসূচী"],
   },
 ];
 
@@ -28,10 +28,19 @@ const Mobile = ({ showNav, handleNavbar }) => {
       setIsShow(null);
     }
   };
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+    if (email) {
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
+    }
+  }, [isAdmin]);
 
   return (
     <div
-      className={`min-h-screen w-[70%] bg-zinc-50 shadow-md fixed top-0 right-0 transition-all duration-500 md:hidden z-50 ${
+      className={`min-h-screen w-[70%] bg-zinc-50 shadow-md fixed top-0 right-0 transition-all duration-500 md:hidden z-50  ${
         showNav && "translate-x-[110%]"
       }`}
     >
@@ -75,6 +84,15 @@ const Mobile = ({ showNav, handleNavbar }) => {
             </div>
           </div>
         ))}
+
+        {isAdmin && (
+          <Link
+            to={"/dashboard"}
+            className="bg-zinc-800 py-1 px-2 rounded-md text-white list-none text-center text-lg block w-full"
+          >
+            <li>ড্যাশবোর্ড</li>
+          </Link>
+        )}
       </div>
     </div>
   );

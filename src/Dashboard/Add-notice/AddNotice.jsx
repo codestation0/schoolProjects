@@ -1,12 +1,11 @@
-import Container from "../../Pages/Shared/Container";
 import { useState } from "react";
-import { postNotice } from "../../utils/utils";
-import toast from "react-hot-toast";
+import axios from "axios";
+import Container from "../../Pages/Shared/Container";
 
 const AddNotice = () => {
-  const [selectedMonth, setSelectedMonth] = useState("");
-  const [selectedDate, setSelectedDate] = useState("");
-  const [textareaValue, setTextareaValue] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedClass, setSelectedClass] = useState("");
+  const [pdfName, setPdfName] = useState("UPLOAD PDF");
   const months = [
     "January",
     "February",
@@ -21,114 +20,90 @@ const AddNotice = () => {
     "November",
     "December",
   ];
-
-  const handleMonthChange = (e) => {
-    setSelectedMonth(e.target.value);
+  const handleClassChange = (e) => {
+    setSelectedClass(e.target.value);
+  };
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+    setPdfName(e.target.files[0]?.name);
   };
 
-  const handleDateChange = (e) => {
-    setSelectedDate(e.target.value);
-  };
+  const handleUpload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("pdf", selectedFile);
+      formData.append("selectedClass", selectedClass);
 
-  const handleTextareaChange = (e) => {
-    setTextareaValue(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    const notice = {
-      month: selectedMonth,
-      date: selectedDate,
-      description: textareaValue,
-    };
-
-    // TODO: CREATE NOTICE FUNC
-    postNotice(notice)
-      .then((res) => {
-        if (res.insertedId) {
-          toast.success("Successfully Notice created");
+      await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/upload-notice`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+      );
+
+      alert("File uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading file", error);
+      alert("Error uploading file");
+    }
   };
 
   return (
-    <div className="py-6">
-      <Container>
-        <form
-          onSubmit={handleSubmit}
-          className="border-2 border-r-primary-20 p-4 rounded-md "
-        >
-          <div className="grid gap-2 md:grid-cols-2">
-            <div className="mb-4">
-              <label
-                htmlFor="monthSelect"
-                className="block text-primary-20/90 font-bold"
-              >
-                Select a Month:
-              </label>
-              <select
-                required
-                id="monthSelect"
-                className="w-full mt-1 p-2 border border-primary-20/30 rounded focus:outline-none focus:border-primary-20/70"
-                value={selectedMonth}
-                onChange={handleMonthChange}
-              >
-                <option value="">Select Month</option>
-                {months.map((month, index) => (
-                  <option key={index} value={month}>
-                    {month}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="dateInput"
-                className="block text-primary-20/90 font-bold"
-              >
-                Enter a Date:
-              </label>
-              <input
-                required
-                type="date"
-                id="dateInput"
-                className="w-full mt-1 p-2 border border-primary-20/30 rounded focus:outline-none focus:border-primary-20/70"
-                value={selectedDate}
-                onChange={handleDateChange}
-              />
-            </div>
-          </div>
-
+    <Container>
+      <div className="min-h-screen max-w-screen-md w-full mx-auto bg-white p-4 rounded-md shadow-lg m-3">
+        <div className="grid gap-3 md:grid-cols-2">
           <div className="mb-4">
             <label
-              htmlFor="textareaInput"
+              htmlFor="classSelect"
               className="block text-primary-20/90 font-bold"
             >
-              Enter Some Text:
+              Select a class:
             </label>
-            <textarea
+            <select
               required
-              id="textareaInput"
+              id="classSelect"
               className="w-full mt-1 p-2 border border-primary-20/30 rounded focus:outline-none focus:border-primary-20/70"
-              value={textareaValue}
-              onChange={handleTextareaChange}
-            />
+              value={selectedClass}
+              onChange={handleClassChange}
+            >
+              <option value="">Select class</option>
+              {months.map((month, index) => (
+                <option key={index} value={month}>
+                  {month}
+                </option>
+              ))}
+            </select>
           </div>
-
-          <button
-            type="submit"
-            className="bg-primary-20 hover:bg-primary-20/90 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-1/2"
-          >
-            Add Notice
-          </button>
-        </form>
-      </Container>
-    </div>
+          <div className="bg-zinc-400 p-4 rounded-md text-white">
+            <label
+              htmlFor="pdf"
+              className=" text-2xl text-center font-bold cursor-pointer block border-2 border-dashed p-2"
+            >
+              {pdfName}
+              <input
+                required
+                type="file"
+                hidden
+                id="pdf"
+                accept=".pdf"
+                onChange={handleFileChange}
+              />
+            </label>
+          </div>
+        </div>
+        <button
+          onClick={handleUpload}
+          className="bg-primary-20 py-3 px-4 rounded-md
+         text-white mt-6 w-full sm:max font-semibold
+         text-lg"
+        >
+          Add Notice
+        </button>
+      </div>
+    </Container>
   );
 };
 

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import avatar from "../../assets/man.jpg";
-import { FaUserGraduate } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import NoticeCard from "../../Pages/Notice/NoticeCard";
 const pricipalTalk = {
   image: "https://picsum.photos/400/400",
   talk: ` শিক্ষা, শৃংখলা, সংযম- এই মূলমন্ত্রকে হৃদয়ে লালন করে প্রগতিশীল পৃথিবী
@@ -18,6 +20,23 @@ const pricipalTalk = {
 };
 const Sidebar = () => {
   const [showMore, setShowMore] = useState(false);
+  const {
+    data: routines = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["routines"],
+    queryFn: async () => {
+      const res = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/all-routine`
+      );
+      return res.data;
+    },
+  });
+
+  if (isLoading) {
+    return "Loading...";
+  }
   return (
     <div className=" space-y-3 mb-4">
       <div className="  bg-primary-20/70 rounded-md p-5">
@@ -82,45 +101,32 @@ const Sidebar = () => {
         <h1 className="bg-primary-20/70 p-3 text-center text-2xl text-zinc-800 font-bold">
           নোটিশ বোর্ড
         </h1>
-        <div className="grid gap-2 grid-cols-[8rem_1fr] bg-primary-30 py-2 px-1 border-b-2 border-blue-700 border-dotted mb-2">
-          <div className="flex flex-col text-center font-bold text-lg ">
-            <span className="bg-primary-10 text-white">Dec</span>
-            <span className="bg-white">01</span>
-          </div>
-          <p>
-            একাদশ শ্রেণিতে ২০২২-২০২৩ শিক্ষাবর্ষে ভর্তির জন্য প্রয়োজনীয় কাগজপত্র
-          </p>
-        </div>
-        <div className="grid gap-2 grid-cols-[8rem_1fr] bg-primary-30 py-2 px-1 border-b-2 border-blue-700 border-dotted mb-2">
-          <div className="flex flex-col text-center font-bold text-lg ">
-            <span className="bg-primary-10 text-white">Dec</span>
-            <span className="bg-white">01</span>
-          </div>
-          <p>
-            একাদশ শ্রেণিতে ২০২২-২০২৩ শিক্ষাবর্ষে ভর্তির জন্য প্রয়োজনীয় কাগজপত্র
-          </p>
-        </div>
-        <div className="grid gap-2 grid-cols-[8rem_1fr] bg-primary-30 py-2 px-1 border-b-2 border-blue-700 border-dotted mb-2">
-          <div className="flex flex-col text-center font-bold text-lg ">
-            <span className="bg-primary-10 text-white">Dec</span>
-            <span className="bg-white">01</span>
-          </div>
-          <p>
-            একাদশ শ্রেণিতে ২০২২-২০২৩ শিক্ষাবর্ষে ভর্তির জন্য প্রয়োজনীয় কাগজপত্র
-          </p>
-        </div>
-      </div>
 
-      {/* exams info */}
-      <div className="space-y-3 font-semibold">
-        <Link className="bg-teal-100 flex items-center gap-2 p-2 rounded-md  text-rose-500">
-          <FaUserGraduate />
-          <h3>পরীক্ষার ফলাফল [অভ্যন্তরীণ]</h3>
-        </Link>
-        <Link className="bg-green-100 flex items-center gap-2 p-2 rounded-md text-rose-500">
-          <FaUserGraduate />
-          <h3>বিগত পরীক্ষার ফলাফল পরিসংখ্যান</h3>
-        </Link>
+        <div>
+          {routines && routines.length > 0 && Array.isArray(routines) ? (
+            <>
+              {routines.map((routine) => (
+                <NoticeCard
+                  key={routine._id}
+                  refetch={refetch}
+                  routine={routine}
+                />
+              ))}
+            </>
+          ) : (
+            <>
+              <p className="text-center text-2xl py-4 text-primary-20">
+                এখন কোন নোটিশ নেই
+              </p>
+              <Link
+                to="/"
+                className="bg-primary-20 text-white py-1 px-2 rounded-md w-max my-5 block mx-auto"
+              >
+                হোম পেজে যান
+              </Link>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

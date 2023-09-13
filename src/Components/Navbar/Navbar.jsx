@@ -16,7 +16,7 @@ const Navbar = () => {
     <>
       <Header />
 
-      <div className="bg-primary-20/80 py-4 w-full relative z-40 drop-shadow-md ">
+      <div className="bg-primary-20/80 py-4 w-full relative z-40 drop-shadow-md  ">
         <Container>
           <div className="flex justify-center">
             {/* TODO: DESKTOP MENU  */}

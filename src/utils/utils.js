@@ -11,12 +11,10 @@ export const postNotice = async (notice) => {
   return data;
 };
 
-
-
-// TODO:GET NOTICE FUNC
+// TODO:DELETE ROUTE FUNC
 export const deleteNotice = async (id) => {
   const res = await axios.delete(
-    `${import.meta.env.VITE_BASE_URL}/delete-notice/${id}`
+    `${import.meta.env.VITE_BASE_URL}/delete-routine/${id}`
   );
 
   const data = res.data;

@@ -1,18 +1,20 @@
-import LastNews from "../../Components/RightSidebar/LastNews";
 import Container from "../Shared/Container";
 import NoticeCard from "./NoticeCard";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
 const Notice = () => {
   const {
-    data: notices = [],
+    data: routines = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["notices"],
+    queryKey: ["routines"],
     queryFn: async () => {
-      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/notices`);
+      const res = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/all-routine`
+      );
       return res.data;
     },
   });
@@ -23,22 +25,22 @@ const Notice = () => {
 
   return (
     <Container>
-      <div className="grid gap-2 lg:grid-cols-2">
+      <div className="max-w-screen-md w-full mx-auto">
         {/* TODO: LAST NEWS  */}
-        <LastNews />
+
         <div className="border-4 rounded-md border-primary-20/70 mb-8 h-max">
           <h1 className="bg-primary-20/70 p-3 text-center text-2xl text-zinc-900">
             নোটিশ বোর্ড
           </h1>
 
           <div>
-            {notices && notices.length > 0 && Array.isArray(notices) ? (
+            {routines && routines.length > 0 && Array.isArray(routines) ? (
               <>
-                {notices.map((notice) => (
+                {routines.map((routine) => (
                   <NoticeCard
-                    key={notice._id}
-                    notice={notice}
+                    key={routine._id}
                     refetch={refetch}
+                    routine={routine}
                   />
                 ))}
               </>

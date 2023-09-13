@@ -37,26 +37,10 @@ const Signin = () => {
 
     const data = await response.json();
     if (!data.error) {
-      generateToken();
       navigate("/");
     }
     setError(data.error);
-  };
-
-  const generateToken = async () => {
-    const userInfo = {
-      email: formData.email,
-    };
-    // -------- JWT TOKEN GENERATE AND SET LOCAL STORAGE -------
-    const response = await fetch("http://localhost:5000/jwt", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userInfo),
-    });
-    const data = await response.json();
-    localStorage.setItem("token", data.token);
+    localStorage.setItem("email", formData.email);
   };
 
   return (

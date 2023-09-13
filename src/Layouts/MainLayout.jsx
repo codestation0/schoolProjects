@@ -4,7 +4,7 @@ import Footer from "../Pages/Shared/Footer/Footer";
 import { Toaster } from "react-hot-toast";
 const MainLayout = () => {
   return (
-    <div className="w-full min-h-screen flex flex-col ">
+    <div className="w-full min-h-screen flex flex-col overflow-x-hidden">
       <div className="mb-4">
         <Navbar />
       </div>

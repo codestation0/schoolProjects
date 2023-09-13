@@ -1,35 +1,50 @@
 import Container from "../Shared/Container";
-import { v4 as uuidv4 } from "uuid";
 import TeacherCard from "./TeacherCard";
-import avater from "../../assets/avater.jpg";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-const teachers = [
-  {
-    id: uuidv4(),
-    name: "আব্দুল্লাহ আল মামুন",
-    designation: "প্রধান শিক্ষক",
-    img: avater,
-  },
-  {
-    id: uuidv4(),
-    name: "আব্দুল্লাহ আল মামুন",
-    designation: "প্রধান শিক্ষক",
-    img: avater,
-  },
-  {
-    id: uuidv4(),
-    name: "আব্দুল্লাহ আল মামুন",
-    designation: "প্রধান শিক্ষক",
-    img: avater,
-  },
-  {
-    id: uuidv4(),
-    name: "আব্দুল্লাহ আল মামুন",
-    designation: "প্রধান শিক্ষক",
-    img: avater,
-  },
-];
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
+// const teachers = [
+//   {
+//     id: uuidv4(),
+//     name: "আব্দুল্লাহ আল মামুন",
+//     designation: "প্রধান শিক্ষক",
+//     img: avater,
+//   },
+//   {
+//     id: uuidv4(),
+//     name: "আব্দুল্লাহ আল মামুন",
+//     designation: "প্রধান শিক্ষক",
+//     img: avater,
+//   },
+//   {
+//     id: uuidv4(),
+//     name: "আব্দুল্লাহ আল মামুন",
+//     designation: "প্রধান শিক্ষক",
+//     img: avater,
+//   },
+//   {
+//     id: uuidv4(),
+//     name: "আব্দুল্লাহ আল মামুন",
+//     designation: "প্রধান শিক্ষক",
+//     img: avater,
+//   },
+// ];
 const Teachers = () => {
+  const { data: teachers = [], isLoading } = useQuery({
+    queryKey: ["teachers"],
+    queryFn: async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/all-teachers`
+        );
+        return res.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  });
+
   return (
     <div className="white mb-6">
       <Container>
@@ -41,7 +56,7 @@ const Teachers = () => {
             </h1>
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 ">
               {teachers.map((teacher) => (
-                <TeacherCard key={teacher.id} teacher={teacher} />
+                <TeacherCard key={teacher._id} teacher={teacher} />
               ))}
             </div>
           </div>

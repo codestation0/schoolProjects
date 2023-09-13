@@ -20,19 +20,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userInfo = {
-      email: formData.email,
-    };
     // -------- JWT TOKEN GENERATE AND SET LOCALSTORAGE -------
-    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/jwt`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userInfo),
-    });
-    const data = await response.json();
-    localStorage.setItem("token", data.token);
 
     // ----------- DATA SEND TO DATABASE ---------------
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/create-user`, {
@@ -40,10 +28,11 @@ const Signup = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ ...formData, role: "user", isLogin: true }),
+      body: JSON.stringify(formData),
     });
     const userData = await res.json();
     if (userData.insertedId) {
+      localStorage.setItem("email", formData.email);
       navigate("/sign-in");
     }
   };
