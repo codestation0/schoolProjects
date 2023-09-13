@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const navData = [
   {
-    id: 1,
+    id: 41,
     title: "প্রতিষ্ঠান পরিতিচি",
     children: ["পরিচিতি", "আসিতেছে"],
   },
@@ -13,14 +14,25 @@ const navData = [
   {
     id: 3,
     title: "পাঠদান সংক্রান্ত তথ্য",
-    children: ["রুটিন", "পাঠ্যসূচী", "শাখার তথ্য", "নোটিশ"],
+    children: ["নোটিশ", "রুটিন", "পাঠ্যসূচী", "শাখার তথ্য"],
   },
 ];
+
 const Desktop = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+    if (email) {
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
+    }
+  }, [isAdmin]);
+
   return (
     <ul className="relative gap-2 items-center text-base hidden md:flex text-white">
       {" "}
-      <Link to="/">
+      <Link to="/" className="block">
         <li className="hover:bg-primary-30 py-1 px-2  rounded-md text-base hover:text-black cursor-pointer">
           হোম
         </li>
@@ -43,6 +55,11 @@ const Desktop = () => {
           </ul>
         </li>
       ))}
+      {isAdmin && (
+        <li className="bg-zinc-800 py-1 px-2 rounded-md">
+          <Link to={"/dashboard"}>ড্যাশবোর্ড</Link>
+        </li>
+      )}
     </ul>
   );
 };
