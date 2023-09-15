@@ -1,8 +1,12 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-
+import TeacherEditModal from "../../Components/Modal/TeacherEditModal";
+import DeleteModal from "../../Components/Modal/DeleteModal";
+import { useState } from "react";
 const TeacherRow = ({ teacher, refetch }) => {
   const { _id, name, image, phone } = teacher;
+  const [isOpen, setIsOpen] = useState(false);
+  const [isEditOpen, setEditIsOpen] = useState(false);
 
   const handleDelete = async (id) => {
     const res = await axios.delete(
@@ -13,6 +17,17 @@ const TeacherRow = ({ teacher, refetch }) => {
       toast.success("Teacher deleted successfully");
       refetch();
     }
+  };
+
+  const modalHandler = (id) => {
+    handleDelete(id);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const closeModalEdit = () => {
+    setEditIsOpen(false);
   };
 
   return (
@@ -36,18 +51,31 @@ const TeacherRow = ({ teacher, refetch }) => {
       </td>
       <td className="px-6 py-4  text-sm text-gray-500 flex flex-col gap-2 sm:flex-row text-right w-max mx-auto">
         <button
+          onClick={() => setEditIsOpen(true)}
           className="py-1 px-4 rounded-md drop-shadow-md bg-primary-20/90 text-white font-semibold
          "
         >
           Edit
         </button>
         <button
-          onClick={() => handleDelete(_id)}
+          onClick={() => setIsOpen(true)}
           className="py-1 px-4 bg-red-500 drop-shadow-md text-white rounded-md"
         >
           Delete
         </button>
       </td>
+
+      <DeleteModal
+        modalHandler={modalHandler}
+        closeModal={closeModal}
+        isOpen={isOpen}
+        id={_id}
+      />
+      <TeacherEditModal
+        closeModalEdit={closeModalEdit}
+        isOpenEdit={isEditOpen}
+        id={_id}
+      />
     </tr>
   );
 };

@@ -35,7 +35,7 @@ const Employee = () => {
       <Container>
         <div className="grid gap-4 md:grid-cols-[23rem_1fr]">
           <Sidebar />
-          <div className="">
+          <div className="md:order-6">
             <h1 className="text-center text-xl sm:text-2xl font-bold bg-primary-20/70 p-2 text-white my-3 rounded-md">
               আমাদের কর্মচারীগণ
             </h1>

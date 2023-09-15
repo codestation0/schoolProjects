@@ -2,7 +2,7 @@ import Slider from "../Slider/Slider";
 
 const RightSide = () => {
   return (
-    <div className="overflow-hidden z-10">
+    <div className="overflow-hidden z-10 order-1 md:order-6">
       <Slider />
       {/* স্কুলের ইতিহাস----------------- */}
       <div className="my-6 border-4 border-primary-20/70 rounded-md">

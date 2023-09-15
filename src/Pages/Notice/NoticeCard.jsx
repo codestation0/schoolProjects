@@ -1,27 +1,6 @@
-import { useEffect, useState } from "react";
-import { deleteNotice } from "../../utils/utils";
-import toast from "react-hot-toast";
 import { BsFileEarmarkPdf } from "react-icons/bs";
-const NoticeCard = ({ routine, refetch }) => {
-  const { _id, selectedClass, filename } = routine;
-  const [user, setUser] = useState(false);
-  const email = localStorage.getItem("email");
-  useEffect(() => {
-    if (email) {
-      setUser(true);
-    } else {
-      setUser(false);
-    }
-  }, [email, user]);
-
-  const handleNoticeDelete = (id) => {
-    deleteNotice(id).then((res) => {
-      if (res.deletedCount > 0) {
-        toast.success("Successfully Deleted");
-        refetch();
-      }
-    });
-  };
+const NoticeCard = ({ routine }) => {
+  const { selectedClass, filename } = routine;
 
   return (
     <>
@@ -39,15 +18,6 @@ const NoticeCard = ({ routine, refetch }) => {
               Download
             </a>
           </button>
-          {/* TODO: CONDITIONALLY SHOW BUTTON */}
-          {user && (
-            <button
-              onClick={() => handleNoticeDelete(_id)}
-              className="text-white bg-rose-500  transition py-1 px-2 rounded-md drop-shadow-md uppercase"
-            >
-              Delete
-            </button>
-          )}
         </div>
       </div>
     </>

@@ -38,7 +38,7 @@ const Sidebar = () => {
     return "Loading...";
   }
   return (
-    <div className=" space-y-3 mb-4">
+    <div className=" space-y-3 mb-4 order-2 md:order-4">
       <div className="  bg-primary-20/70 rounded-md p-5">
         <div className="z-10">
           <img

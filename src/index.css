@@ -9,3 +9,11 @@
 .swiper .swiper-initialized {
   z-index: -1;
 }
+
+/* TODO: ACTIVE NAV LINKS STYLE  */
+.active {
+  @apply py-1 rounded-md block w-full bg-zinc-800 shadow-sm hover:bg-zinc-600 transition;
+}
+.pending {
+  @apply py-1 rounded-md block w-full bg-zinc-500 shadow-sm hover:bg-zinc-600 transition;
+}

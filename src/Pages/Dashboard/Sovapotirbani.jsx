@@ -1,55 +1,30 @@
 import axios from "axios";
 import { useState } from "react";
-import FormData from "form-data";
 
 const Sovapotirbani = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    image: null,
-    message: "",
-  });
+  const [description, setDescription] = useState("");
 
-  const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      image: e.target.files[0],
-    });
-  };
-
-  // Handle form input changes
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const value = e.target.value;
+    setDescription(value);
   };
 
   // Handle form submission (you can implement the submission logic here)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formDataToSend = new FormData();
-    formDataToSend.append("name", formData.name);
-    formDataToSend.append("image", formData.image);
-    formDataToSend.append("message", formData.message);
-
     const res = await axios.post(
       `${import.meta.env.VITE_BASE_URL}/add-sovapotirbani`,
-      formDataToSend,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+      { description }
     );
     if (res.data.insertedId) {
       alert("Bani added");
-      setFormData({
-        name: "",
-        image: null,
-        message: "",
-      });
+      setDescription("");
     }
     console.log(res);
   };
+
+
 
   return (
     <div className="max-w-lg mx-auto mt-5  w-full ">
@@ -57,7 +32,7 @@ const Sovapotirbani = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label
             className="block text-primary-20/80 text-base font-bold mb-2"
             htmlFor="name"
@@ -74,8 +49,9 @@ const Sovapotirbani = () => {
             onChange={handleInputChange}
             placeholder="John Doe"
           />
-        </div>
-        <div className="mb-4">
+        </div> */}
+
+        {/* <div className="mb-4">
           <label
             className="block text-primary-20/80 text-base font-bold mb-2"
             htmlFor="image"
@@ -91,7 +67,7 @@ const Sovapotirbani = () => {
             name="image"
             accept="image/*"
           />
-        </div>
+        </div> */}
 
         <div className="mb-4">
           <label
@@ -106,7 +82,7 @@ const Sovapotirbani = () => {
             type="text"
             id="message"
             name="message"
-            value={formData.phone}
+            value={description}
             onChange={handleInputChange}
             placeholder="Write here..."
             cols="20"

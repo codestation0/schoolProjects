@@ -5,7 +5,7 @@ import Container from "./Shared/Container";
 const Home = () => {
   return (
     <Container>
-      <div className=" grid gap-4 md:grid-cols-[23rem_1fr] overflow-hidden">
+      <div className=" grid gap-4 md:grid-cols-[16rem_1fr] lg:grid-cols-[20rem_1fr] overflow-hidden">
         <Sidebar />
         <RightSide />
       </div>

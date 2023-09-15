@@ -20,6 +20,7 @@ import AllTeacher from "../Pages/Dashboard/AllTeacher";
 import SovapotirbaniTable from "../Pages/Dashboard/SovabpotirbaniTable";
 import RoutineTable from "../Pages/Dashboard/RoutineTable";
 import NoticeTable from "../Pages/Dashboard/NoticeTable";
+import Routine from "../Pages/Routine/Routine";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/রুটিন",
-        element: <RoutineList />,
+        element: <Routine />,
       },
     ],
   },

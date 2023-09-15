@@ -1,7 +1,18 @@
 import axios from "axios";
+import { useState } from "react";
 import toast from "react-hot-toast";
-const SovapotirbaniRow = ({ sovapoti, refetch }) => {
+import DeleteModal from "../Modal/DeleteModal";
+import SovapotirbaniEditModal from "../Modal/SovapotirbaniEditModal";
+const SovapotirbaniRow = ({ sovapoti = {}, refetch }) => {
   const { _id, name, image, description } = sovapoti;
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const closeModalEdit = () => {
+    setIsOpenEdit(false);
+  };
 
   const handleDelete = async (id) => {
     const res = await axios.delete(
@@ -14,9 +25,13 @@ const SovapotirbaniRow = ({ sovapoti, refetch }) => {
     }
   };
 
+  const modalHandler = (id) => {
+    handleDelete(id);
+  };
+
   return (
     <tr className="odd:bg-zinc-300 hover:bg-zinc-400 hover:text-white transition">
-      <td className="px-6 py-2">
+      {/* <td className="px-6 py-2">
         <div className="flex items-center">
           <div className="flex-shrink-0 h-12 w-12">
             <img
@@ -29,7 +44,7 @@ const SovapotirbaniRow = ({ sovapoti, refetch }) => {
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-900">{name}</div>
-      </td>
+      </td> */}
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-900">
           {description.slice(0, 150) + "..."}
@@ -37,18 +52,32 @@ const SovapotirbaniRow = ({ sovapoti, refetch }) => {
       </td>
       <td className="px-6 py-4  text-sm text-gray-500 flex flex-col gap-2 sm:flex-row text-right w-max mx-auto">
         <button
+          onClick={() => setIsOpenEdit(true)}
           className="py-1 px-4 rounded-md drop-shadow-md bg-primary-20/90 text-white font-semibold
          "
         >
           Edit
         </button>
         <button
-          onClick={() => handleDelete(_id)}
+          onClick={() => setIsOpen(true)}
           className="py-1 px-4 bg-red-500 drop-shadow-md text-white rounded-md"
         >
           Delete
         </button>
       </td>
+      <DeleteModal
+        modalHandler={modalHandler}
+        isOpen={isOpen}
+        closeModal={closeModal}
+        id={_id}
+      />
+
+      <SovapotirbaniEditModal
+        id={_id}
+        isOpenEdit={isOpenEdit}
+        closeModalEdit={closeModalEdit}
+        refetch={refetch}
+      />
     </tr>
   );
 };

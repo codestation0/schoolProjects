@@ -29,8 +29,8 @@ const Routine = () => {
         {/* TODO: LAST NEWS  */}
 
         <div className="border-4 rounded-md border-primary-20/70 mb-8 h-max">
-          <h1 className="bg-primary-20/70 p-3 text-center text-2xl text-zinc-900">
-            নোটিশ বোর্ড
+          <h1 className="bg-primary-20/70 p-3 text-center text-2xl text-white">
+            ক্লাস রুটিন
           </h1>
 
           <div>

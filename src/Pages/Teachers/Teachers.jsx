@@ -4,32 +4,6 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-// const teachers = [
-//   {
-//     id: uuidv4(),
-//     name: "আব্দুল্লাহ আল মামুন",
-//     designation: "প্রধান শিক্ষক",
-//     img: avater,
-//   },
-//   {
-//     id: uuidv4(),
-//     name: "আব্দুল্লাহ আল মামুন",
-//     designation: "প্রধান শিক্ষক",
-//     img: avater,
-//   },
-//   {
-//     id: uuidv4(),
-//     name: "আব্দুল্লাহ আল মামুন",
-//     designation: "প্রধান শিক্ষক",
-//     img: avater,
-//   },
-//   {
-//     id: uuidv4(),
-//     name: "আব্দুল্লাহ আল মামুন",
-//     designation: "প্রধান শিক্ষক",
-//     img: avater,
-//   },
-// ];
 const Teachers = () => {
   const { data: teachers = [], isLoading } = useQuery({
     queryKey: ["teachers"],
@@ -50,7 +24,7 @@ const Teachers = () => {
       <Container>
         <div className="grid gap-4 md:grid-cols-[23rem_1fr]">
           <Sidebar />
-          <div>
+          <div className="order-0 md:order-6">
             <h1 className="text-center text-xl sm:text-2xl font-bold bg-primary-20/70 p-2 text-white my-3 rounded-md">
               আমাদের সম্মানীয় শিক্ষকমণ্ডলীগন
             </h1>
