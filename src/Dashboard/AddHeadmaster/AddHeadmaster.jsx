@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import FormData from "form-data";
 import FormTitle from "../../Pages/Shared/FormTitle";
-const AddTeacher = () => {
+const AddHeadmaster = () => {
   // Define state variables for form inputs
 
   const [formData, setFormData] = useState({
@@ -68,7 +68,7 @@ const AddTeacher = () => {
     formDataToSend.append("PHD", formData.PHD);
 
     const res = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/teacherInfo`,
+      `${import.meta.env.VITE_BASE_URL}/add-headmaster`,
       formDataToSend,
       {
         headers: {
@@ -77,7 +77,7 @@ const AddTeacher = () => {
       }
     );
     if (res.data.insertedId) {
-      alert("Teacher added");
+      alert("Headmaster information added");
       setFormData({
         name: "",
         image: null,
@@ -102,7 +102,7 @@ const AddTeacher = () => {
 
   return (
     <div className="max-w-screen-lg mx-auto mt-5  w-full ">
-      <FormTitle title={"Add Teacher Information"} />
+      <FormTitle title={"Add Headmaster Information"} />
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 "
@@ -426,4 +426,4 @@ const AddTeacher = () => {
   );
 };
 
-export default AddTeacher;
+export default AddHeadmaster;

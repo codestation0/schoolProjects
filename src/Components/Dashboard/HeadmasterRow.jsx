@@ -1,20 +1,21 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-import TeacherEditModal from "../../Components/Modal/TeacherEditModal";
+import HeadmasterEditModal from "../../Components/Modal/HeadmasterEditModal";
 import DeleteModal from "../../Components/Modal/DeleteModal";
 import { useState } from "react";
-const TeacherRow = ({ teacher, refetch }) => {
-  const { _id, name, image, phone } = teacher;
+
+const HeadmasterRow = ({ headmaster, refetch }) => {
+  const { _id, name, image, phone } = headmaster;
   const [isOpen, setIsOpen] = useState(false);
   const [isEditOpen, setEditIsOpen] = useState(false);
 
   const handleDelete = async (id) => {
     const res = await axios.delete(
-      `${import.meta.env.VITE_BASE_URL}/delete-teacher/${id}`
+      `${import.meta.env.VITE_BASE_URL}/delete-headmaster/${id}`
     );
 
     if (res.data.deletedCount > 0) {
-      toast.success("Teacher deleted successfully");
+      toast.success(" deleted successfully");
       refetch();
     }
   };
@@ -71,7 +72,7 @@ const TeacherRow = ({ teacher, refetch }) => {
         isOpen={isOpen}
         id={_id}
       />
-      <TeacherEditModal
+      <HeadmasterEditModal
         closeModalEdit={closeModalEdit}
         isOpenEdit={isEditOpen}
         id={_id}
@@ -81,4 +82,4 @@ const TeacherRow = ({ teacher, refetch }) => {
   );
 };
 
-export default TeacherRow;
+export default HeadmasterRow;

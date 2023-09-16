@@ -4,9 +4,9 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
+  // console.log(id);
   //   const [description, setDescription] = useState("");
   //   const inputRef = useRef();
-
   const [formData, setFormData] = useState({
     name: "",
 
@@ -27,21 +27,17 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
     PHD: "",
   });
 
-  const { data: defaultInfo = {}, refetch: defaultRefetch } = useQuery({
-    queryKey: ["singleteacher", id],
-    queryFn: async () => {
-      const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/single-teacher/${id}`
-      );
-      return res.data;
-    },
-  });
-  // const handleFileChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     image: e.target.files[0],
-  //   });
-  // };
+  const { data: defaultHeadmasterInfo = {}, refetch: defaultRefetch } =
+    useQuery({
+      queryKey: ["singleheadmaster"],
+      queryFn: async () => {
+        const res = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/single-headmaster/${id}`
+        );
+
+        return res.data;
+      },
+    });
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -52,20 +48,15 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
   // Handle form submission (you can implement the submission logic here)
   const modalHandlerEdit = async () => {
     await axios.patch(
-      `${import.meta.env.VITE_BASE_URL}/update-teacherinformation/${id}`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+      `${import.meta.env.VITE_BASE_URL}/update-headmasterinformation/${id}`,
+      formData
     );
+
     closeModalEdit();
   };
 
   defaultRefetch();
   refetch();
-
   return (
     <Transition appear show={isOpenEdit} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModalEdit}>
@@ -122,27 +113,10 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="name"
                             name="name"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.name}
+                            defaultValue={defaultHeadmasterInfo.name}
                           />
                         </div>
 
-                        {/* <div className="mb-4">
-                          <label
-                            className="block text-primary-20/80 text-base font-bold mb-2"
-                            htmlFor="image"
-                          >
-                            Image
-                          </label>
-                          <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
-                            onChange={handleFileChange}
-                            type="file"
-                            id="image"
-                            name="image"
-                            accept="image/*"
-                          />
-                        </div>
-                         */}
                         <div className="mb-4">
                           <label
                             className="block text-primary-20/80 text-base font-bold mb-2"
@@ -156,7 +130,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="phone"
                             name="phone"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.phone}
+                            defaultValue={defaultHeadmasterInfo.phone}
                           />
                         </div>
 
@@ -173,7 +147,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="designation"
                             name="designation"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.designation}
+                            defaultValue={defaultHeadmasterInfo.designation}
                           />
                         </div>
 
@@ -190,7 +164,9 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="First_Date_of_joining"
                             name="First_Date_of_joining"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.First_Date_of_joining}
+                            defaultValue={
+                              defaultHeadmasterInfo.First_Date_of_joining
+                            }
                           />
                         </div>
 
@@ -207,7 +183,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="Date_of_joining"
                             name="Date_of_joining"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.Date_of_joining}
+                            defaultValue={defaultHeadmasterInfo.Date_of_joining}
                           />
                         </div>
                         <div className="mb-4">
@@ -223,7 +199,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="Date_of_MPO"
                             name="Date_of_MPO"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.Date_of_MPO}
+                            defaultValue={defaultHeadmasterInfo.Date_of_MPO}
                           />
                         </div>
 
@@ -240,7 +216,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="Date_of_birth"
                             name="Date_of_birth"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.Date_of_birth}
+                            defaultValue={defaultHeadmasterInfo.Date_of_birth}
                           />
                         </div>
 
@@ -257,7 +233,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="SSC"
                             name="SSC"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.SSC}
+                            defaultValue={defaultHeadmasterInfo.SSC}
                           />
                         </div>
 
@@ -274,7 +250,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="HSC"
                             name="HSC"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.HSC}
+                            defaultValue={defaultHeadmasterInfo.HSC}
                           />
                         </div>
 
@@ -291,7 +267,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="BA"
                             name="BA"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.BA}
+                            defaultValue={defaultHeadmasterInfo.BA}
                           />
                         </div>
 
@@ -308,7 +284,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="HONS"
                             name="HONS"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.HONS}
+                            defaultValue={defaultHeadmasterInfo.HONS}
                           />
                         </div>
 
@@ -325,7 +301,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="M_ED"
                             name="M_ED"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.M_ED}
+                            defaultValue={defaultHeadmasterInfo.M_ED}
                           />
                         </div>
 
@@ -342,7 +318,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="B_ED"
                             name="B_ED"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.B_ED}
+                            defaultValue={defaultHeadmasterInfo.B_ED}
                           />
                         </div>
 
@@ -359,7 +335,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="Masters"
                             name="Masters"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.Masters}
+                            defaultValue={defaultHeadmasterInfo.Masters}
                           />
                         </div>
 
@@ -376,7 +352,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="M_Phil"
                             name="M_Phil"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.M_Phil}
+                            defaultValue={defaultHeadmasterInfo.M_Phil}
                           />
                         </div>
 
@@ -393,7 +369,7 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                             id="PHD"
                             name="PHD"
                             onChange={handleInputChange}
-                            defaultValue={defaultInfo.PHD}
+                            defaultValue={defaultHeadmasterInfo.PHD}
                           />
                         </div>
                       </div>

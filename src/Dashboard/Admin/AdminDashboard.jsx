@@ -1,9 +1,13 @@
-import { NavLink, Outlet } from "react-router-dom";
-import { RiMenu2Fill } from "react-icons/ri";
-import { MdClose } from "react-icons/md";
 import { useState } from "react";
+import { MdClose } from "react-icons/md";
+import { RiMenu2Fill } from "react-icons/ri";
+import { NavLink, Outlet } from "react-router-dom";
 const AdminDashboard = () => {
   const [isShow, setIsShow] = useState(true);
+  const [showChild, setShowChild] = useState(false);
+  const toggleShowChild = () => {
+    setShowChild(false);
+  };
   return (
     <div
       className={`min-h-screen w-full  grid  overflow-hidden transition ${
@@ -25,39 +29,84 @@ const AdminDashboard = () => {
               <li className="">Home</li>
             </NavLink>
 
+            <div
+              className="active pending"
+              // className={({ isActive }) => (isActive ? "active" : "pending")}
+            >
+              <li onClick={() => setShowChild(true)} className="cursor-pointer">
+                Add Teacher
+              </li>
+              <ul className={`${!showChild && "h-0 overflow-hidden"}`}>
+                <NavLink
+                  to={"/dashboard/add-teacher"}
+                  className={({ isActive }) =>
+                    isActive ? "active" : "pending"
+                  }
+                >
+                  <li className="">Teacher</li>
+                </NavLink>
+                <NavLink
+                  to={"/dashboard/add-headmaster"}
+                  className={({ isActive }) =>
+                    isActive ? "active" : "pending"
+                  }
+                >
+                  <li>Headmaster</li>
+                </NavLink>
+              </ul>
+            </div>
+
             <NavLink
-              to={"/dashboard/add-teacher"}
+              to={"/dashboard/add-stuff"}
               className={({ isActive }) => (isActive ? "active" : "pending")}
             >
-              <li className="">Add Teacher</li>
+              <li onClick={toggleShowChild} className="">
+                Add Stuff
+              </li>
             </NavLink>
 
             <NavLink
               to={"/dashboard/add-routine"}
               className={({ isActive }) => (isActive ? "active" : "pending")}
             >
-              <li className="">Add Routine</li>
+              <li onClick={toggleShowChild} className="">
+                Add Routine
+              </li>
             </NavLink>
 
             <NavLink
               to={"/dashboard/add-notice"}
               className={({ isActive }) => (isActive ? "active" : "pending")}
             >
-              <li className="">Add Notice</li>
+              <li onClick={toggleShowChild} className="">
+                Add Notice
+              </li>
             </NavLink>
 
+            <NavLink
+              to={"/dashboard/add-porishod"}
+              className={({ isActive }) => (isActive ? "active" : "pending")}
+            >
+              <li onClick={toggleShowChild} className="">
+                Add Porishod Porsho
+              </li>
+            </NavLink>
             <NavLink
               to={"/dashboard/add-sovapotirbani"}
               className={({ isActive }) => (isActive ? "active" : "pending")}
             >
-              <li className="">Add Sovapotir Bani</li>
+              <li onClick={toggleShowChild} className="">
+                Add Sovapotir Bani
+              </li>
             </NavLink>
 
             <NavLink
               to={"/dashboard/add-instituteinfo"}
               className={({ isActive }) => (isActive ? "active" : "pending")}
             >
-              <li className="">Add Institute Info</li>
+              <li onClick={toggleShowChild} className="">
+                Add Institute Info
+              </li>
             </NavLink>
           </ul>
         </div>
@@ -68,31 +117,64 @@ const AdminDashboard = () => {
           </h1>
           <ul className="text-white text-center flex flex-col gap-2">
             <NavLink
+              to={"/dashboard/headmasterInfo"}
+              className={({ isActive }) => (isActive ? "active" : "pending")}
+            >
+              <li onClick={toggleShowChild} className="">
+                HEADMASTER INFORMATION
+              </li>
+            </NavLink>
+            <NavLink
               to={"/dashboard/all-teacher"}
               className={({ isActive }) => (isActive ? "active" : "pending")}
             >
-              <li className="">All Teacher</li>
+              <li onClick={toggleShowChild} className="">
+                All Teacher
+              </li>
+            </NavLink>
+
+            <NavLink
+              to={"/dashboard/all-stuff"}
+              className={({ isActive }) => (isActive ? "active" : "pending")}
+            >
+              <li onClick={toggleShowChild} className="">
+                All Stuff
+              </li>
+            </NavLink>
+            <NavLink
+              to={"/dashboard/all-porishod"}
+              className={({ isActive }) => (isActive ? "active" : "pending")}
+            >
+              <li onClick={toggleShowChild} className="">
+                Porishod Porshod
+              </li>
             </NavLink>
 
             <NavLink
               to={"/dashboard/sovapotir-bani"}
               className={({ isActive }) => (isActive ? "active" : "pending")}
             >
-              <li className="">Sovapotir Bani</li>
+              <li onClick={toggleShowChild} className="">
+                Sovapotir Bani
+              </li>
             </NavLink>
 
             <NavLink
               to={"/dashboard/all-routine"}
               className={({ isActive }) => (isActive ? "active" : "pending")}
             >
-              <li className="">All Routine</li>
+              <li onClick={toggleShowChild} className="">
+                All Routine
+              </li>
             </NavLink>
 
             <NavLink
               to={"/dashboard/all-notice"}
               className={({ isActive }) => (isActive ? "active" : "pending")}
             >
-              <li className="">All Notice</li>
+              <li onClick={toggleShowChild} className="">
+                All Notice
+              </li>
             </NavLink>
           </ul>
         </div>
