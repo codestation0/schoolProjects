@@ -1,6 +1,7 @@
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 import Container from "../../Pages/Shared/Container";
+import FormTitle from "../../Pages/Shared/FormTitle";
 
 const AddRoutine = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -39,6 +40,7 @@ const AddRoutine = () => {
 
   return (
     <Container>
+      <FormTitle title={"Add Notice"} />
       <div className="min-h-screen max-w-screen-md w-full mx-auto bg-white p-4 rounded-md shadow-lg m-3">
         <div className="grid gap-3 md:grid-cols-2">
           <div className="mb-4">

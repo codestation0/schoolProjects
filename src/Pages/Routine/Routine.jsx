@@ -1,23 +1,39 @@
-import Container from "../Shared/Container";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Container from "../Shared/Container";
 import RoutineCard from "./RoutineCard";
 
 const Routine = () => {
+  const [totalNotice, setTotalNotice] = useState(0);
+  const [routinePerPage, setRoutinePerpage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(0);
+  const pageNum = Math.ceil(totalNotice / routinePerPage);
+
+  const buttonsArr = [...Array(pageNum).keys()];
+
   const {
     data: routines = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["routines"],
+    queryKey: ["routines", currentPage, pageNum],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/all-routine`
+        `${
+          import.meta.env.VITE_BASE_URL
+        }/all-routine?currentPage=${currentPage}&itemPerPage=${routinePerPage}`
       );
       return res.data;
     },
   });
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/total-routine-count")
+      .then((res) => setTotalNotice(res.data.result));
+  }, []);
 
   if (isLoading) {
     return "Loading...";
@@ -57,6 +73,19 @@ const Routine = () => {
                 </Link>
               </>
             )}
+          </div>
+          <div className="w-max mx-auto my-4 px-2 flex gap-2 items-center">
+            {buttonsArr.map((button, i) => (
+              <button
+                onClick={() => setCurrentPage(button)}
+                key={button}
+                className={`w-7 h-7 border border-zinc-400 rounded-full hover:bg-zinc-500 hover:text-white transition ${
+                  currentPage === button && "bg-zinc-700 text-white"
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
           </div>
         </div>
       </div>

@@ -7,8 +7,10 @@ import AddRoutine from "../Dashboard/Add-routine/AddRoutine";
 import AddTeacher from "../Dashboard/Add-techer/AddTeacher";
 import AddHeadmaster from "../Dashboard/AddHeadmaster/AddHeadmaster";
 import AddPorshodPorishod from "../Dashboard/AddPorshodPorishod/AddPorshodPorishod";
+import AddSchoolInformation from "../Dashboard/AddSchoolInformation/AddSchoolInformation";
 import AddStuff from "../Dashboard/AddStuff/AddStuff";
 import AdminDashboard from "../Dashboard/Admin/AdminDashboard";
+import AllSchoolInformationTable from "../Pages/Dashboard/AllSchoolInformationTable";
 import AllTeacher from "../Pages/Dashboard/AllTeacher";
 import HeadmasterInfo from "../Pages/Dashboard/HeadmasterInfo";
 import InstituteInfo from "../Pages/Dashboard/InstituteInfo";
@@ -26,6 +28,8 @@ import Routine from "../Pages/Routine/Routine";
 import Signin from "../Pages/Shared/Form/Signin";
 import Signup from "../Pages/Shared/Form/Signup";
 import Teachers from "../Pages/Teachers/Teachers";
+import WelcomePage from "../Pages/WelcomePage";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -62,8 +66,16 @@ const router = createBrowserRouter([
 
   {
     path: "/dashboard",
-    element: <AdminDashboard />,
+    element: (
+      <PrivetRoute>
+        <AdminDashboard />
+      </PrivetRoute>
+    ),
     children: [
+      {
+        path: "/dashboard",
+        element: <WelcomePage />,
+      },
       {
         path: "/dashboard/add-routine",
         element: <AddRoutine />,
@@ -79,6 +91,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/add-headmaster",
         element: <AddHeadmaster />,
+      },
+      {
+        path: "/dashboard/add-schoolinfo",
+        element: <AddSchoolInformation />,
       },
 
       {
@@ -125,6 +141,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/all-porishod",
         element: <PorishodTable />,
+      },
+      {
+        path: "/dashboard/all-school-information",
+        element: <AllSchoolInformationTable />,
       },
     ],
   },

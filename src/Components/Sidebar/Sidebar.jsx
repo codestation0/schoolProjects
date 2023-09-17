@@ -1,9 +1,9 @@
-import { useState } from "react";
-import avatar from "../../assets/man.jpg";
-import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import NoticeCard from "../../Pages/Notice/NoticeCard";
+import avatar from "../../assets/man.jpg";
 const pricipalTalk = {
   image: "https://picsum.photos/400/400",
   talk: ` শিক্ষা, শৃংখলা, সংযম- এই মূলমন্ত্রকে হৃদয়ে লালন করে প্রগতিশীল পৃথিবী
@@ -20,23 +20,40 @@ const pricipalTalk = {
 };
 const Sidebar = () => {
   const [showMore, setShowMore] = useState(false);
+  const [totalNotice, setTotalNotice] = useState(0);
+  const [routinePerPage, setRoutinePerpage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(0);
+
   const {
     data: routines = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["routines"],
+    queryKey: ["routines", routinePerPage, currentPage],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/all-routine`
+        `${
+          import.meta.env.VITE_BASE_URL
+        }/all-routine?currentPage=${currentPage}&itemPerPage=${routinePerPage}`
       );
       return res.data;
     },
   });
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/total-routine-count")
+      .then((res) => setTotalNotice(res.data.result));
+  }, []);
+
+  const pageNum = Math.ceil(totalNotice / routinePerPage);
+
+  const buttonsArr = [...Array(pageNum).keys()];
+
   if (isLoading) {
     return "Loading...";
   }
+
   return (
     <div className=" space-y-3 mb-4 order-2 md:order-4">
       <div className="  bg-primary-20/70 rounded-md p-5">
@@ -96,10 +113,10 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {/* TODO: NOTICE BOARD */}
+      {/* TODO: ! NOTICE BOARD */}
       <div className="border-4 rounded-md border-primary-20/70">
         <h1 className="bg-primary-20/70 p-3 text-center text-2xl text-zinc-800 font-bold">
-          নোটিশ বোর্ড
+          রুটিন বোর্ড
         </h1>
 
         <div>
@@ -126,6 +143,19 @@ const Sidebar = () => {
               </Link>
             </>
           )}
+        </div>
+        <div className="w-max mx-auto my-4 px-2 flex gap-2 items-center">
+          {buttonsArr.map((button, i) => (
+            <button
+              onClick={() => setCurrentPage(button)}
+              key={button}
+              className={`w-7 h-7 border border-zinc-400 rounded-full hover:bg-zinc-500 hover:text-white transition ${
+                currentPage === button && "bg-zinc-700 text-white"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
         </div>
       </div>
     </div>

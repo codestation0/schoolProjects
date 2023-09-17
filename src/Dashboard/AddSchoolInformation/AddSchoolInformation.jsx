@@ -2,14 +2,13 @@ import axios from "axios";
 import FormData from "form-data";
 import { useState } from "react";
 import FormTitle from "../../Pages/Shared/FormTitle";
-const AddPorshodPorishod = () => {
+const AddSchoolInformation = () => {
   // Define state variables for form inputs
 
   const [formData, setFormData] = useState({
     name: "",
     image: null,
-    phone: "",
-    designation: "",
+    code: "",
   });
 
   const handleFileChange = (e) => {
@@ -34,11 +33,10 @@ const AddPorshodPorishod = () => {
     const formDataToSend = new FormData();
     formDataToSend.append("name", formData.name);
     formDataToSend.append("image", formData.image);
-    formDataToSend.append("phone", formData.phone);
-    formDataToSend.append("designation", formData.designation);
+    formDataToSend.append("code", formData.code);
 
     const res = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/add-porishod`,
+      `${import.meta.env.VITE_BASE_URL}/add-school-information`,
       formDataToSend,
       {
         headers: {
@@ -47,19 +45,18 @@ const AddPorshodPorishod = () => {
       }
     );
     if (res.data.insertedId) {
-      alert("Teacher added");
+      alert("Information added");
       setFormData({
         name: "",
         image: null,
-        phone: "",
-        designation: "",
+        code: "",
       });
     }
   };
 
   return (
     <div className="max-w-screen-lg mx-auto mt-5  w-full ">
-      <FormTitle title={"Add Porisho Porshod Information"} />
+      <FormTitle title={"Add School Information"} />
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 "
@@ -70,7 +67,7 @@ const AddPorshodPorishod = () => {
               className="block text-primary-20/80 text-base font-bold mb-2"
               htmlFor="name"
             >
-              Name
+              School Name
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
@@ -79,7 +76,7 @@ const AddPorshodPorishod = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              placeholder="John Doe"
+              placeholder="School name"
             />
           </div>
 
@@ -102,36 +99,18 @@ const AddPorshodPorishod = () => {
           <div className="mb-4">
             <label
               className="block text-primary-20/80 text-base font-bold mb-2"
-              htmlFor="phone"
+              htmlFor="code"
             >
-              Phone
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
-              type="phone"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              placeholder="0123456789"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label
-              className="block text-primary-20/80 text-base font-bold mb-2"
-              htmlFor="designation"
-            >
-              designation
+              School Code
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
-              id="designation"
-              name="designation"
-              value={formData.designation}
+              id="code"
+              name="code"
+              value={formData.code}
               onChange={handleInputChange}
-              placeholder="designation"
+              placeholder="school code"
             />
           </div>
         </div>
@@ -142,7 +121,7 @@ const AddPorshodPorishod = () => {
             className="bg-primary-20/80 hover:bg-primary-20 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             type="submit"
           >
-            Add Porshod Post
+            Add School info
           </button>
         </div>
       </form>
@@ -150,4 +129,4 @@ const AddPorshodPorishod = () => {
   );
 };
 
-export default AddPorshodPorishod;
+export default AddSchoolInformation;

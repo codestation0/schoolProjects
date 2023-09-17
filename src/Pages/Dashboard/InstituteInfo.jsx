@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useState } from "react";
 import FormData from "form-data";
+import { useState } from "react";
+import FormTitle from "../Shared/FormTitle";
 
 const InstituteInfo = () => {
   const [images, setImages] = useState();
@@ -54,6 +55,7 @@ const InstituteInfo = () => {
 
   return (
     <div className="max-w-4xl mx-auto mt-5  w-full ">
+      <FormTitle title={"Add Institute Information"} />
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"

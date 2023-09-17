@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { BiChevronRight, BiChevronDown } from "react-icons/bi";
+import { useState } from "react";
+import { BiChevronDown, BiChevronRight } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 const navData = [
@@ -28,15 +28,6 @@ const Mobile = ({ showNav, handleNavbar }) => {
       setIsShow(null);
     }
   };
-  const [isAdmin, setIsAdmin] = useState(false);
-  useEffect(() => {
-    const email = localStorage.getItem("email");
-    if (email) {
-      setIsAdmin(true);
-    } else {
-      setIsAdmin(false);
-    }
-  }, [isAdmin]);
 
   return (
     <div
@@ -84,15 +75,6 @@ const Mobile = ({ showNav, handleNavbar }) => {
             </div>
           </div>
         ))}
-
-        {isAdmin && (
-          <Link
-            to={"/dashboard"}
-            className="bg-zinc-800 py-1 px-2 rounded-md text-white list-none text-center text-lg block w-full"
-          >
-            <li>ড্যাশবোর্ড</li>
-          </Link>
-        )}
       </div>
     </div>
   );

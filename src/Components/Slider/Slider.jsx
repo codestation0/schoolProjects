@@ -12,7 +12,7 @@ const Slider = () => {
           modules={[Autoplay]}
           spaceBetween={50}
           slidesPerView={1}
-          onSlideChange={() => console.log("slide change")}
+          onSlideChange={() => {}}
           onSwiper={(swiper) => console.log(swiper)}
         >
           <SwiperSlide>

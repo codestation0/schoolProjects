@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import FormTitle from "../Shared/FormTitle";
 
 const Sovapotirbani = () => {
   const [description, setDescription] = useState("");
@@ -24,51 +25,13 @@ const Sovapotirbani = () => {
     console.log(res);
   };
 
-
-
   return (
     <div className="max-w-lg mx-auto mt-5  w-full ">
+      <FormTitle title={"Add Sovapotir Bani"} />
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
-        {/* <div className="mb-4">
-          <label
-            className="block text-primary-20/80 text-base font-bold mb-2"
-            htmlFor="name"
-          >
-            Name
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
-            required
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            placeholder="John Doe"
-          />
-        </div> */}
-
-        {/* <div className="mb-4">
-          <label
-            className="block text-primary-20/80 text-base font-bold mb-2"
-            htmlFor="image"
-          >
-            Image
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
-            onChange={handleFileChange}
-            required
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-          />
-        </div> */}
-
         <div className="mb-4">
           <label
             className="block text-primary-20/80 text-base font-bold mb-2"
