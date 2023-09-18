@@ -13,7 +13,7 @@ const RoutineCard = ({ routine }) => {
         </div>
         <div className="flex flex-col gap-3">
           <button className="text-white bg-primary-20  transition py-1 px-2 rounded-md drop-shadow-md uppercase">
-            <a href="" download={filename}>
+            <a href="" download={filename} className="md:text-xs">
               {" "}
               Download
             </a>
