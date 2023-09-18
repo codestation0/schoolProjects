@@ -1,8 +1,10 @@
-import Container from "../Shared/Container";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import EmployeeCard from "./EmployeeCard";
-import avater from "../../assets/avater.jpg";
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import avater from "../../assets/avater.jpg";
+import Container from "../Shared/Container";
+import EmployeeCard from "./EmployeeCard";
 const employees = [
   {
     id: uuidv4(),
@@ -30,6 +32,14 @@ const employees = [
   },
 ];
 const Employee = () => {
+  const { data: employees = [] } = useQuery({
+    queryKey: ["employees-information"],
+    queryFn: async () => {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/all-stuff`);
+
+      return res.data;
+    },
+  });
   return (
     <div className="mb-6">
       <Container>

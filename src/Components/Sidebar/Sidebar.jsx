@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NoticeCard from "../../Pages/Notice/NoticeCard";
-import avatar from "../../assets/man.jpg";
+import HeadmasterInformation from "../HeadmasterInformation/HeadmasterInformation";
 const pricipalTalk = {
   image: "https://picsum.photos/400/400",
   talk: ` শিক্ষা, শৃংখলা, সংযম- এই মূলমন্ত্রকে হৃদয়ে লালন করে প্রগতিশীল পৃথিবী
@@ -56,25 +56,7 @@ const Sidebar = () => {
 
   return (
     <div className=" space-y-3 mb-4 order-2 md:order-4">
-      <div className="  bg-primary-20/70 rounded-md p-5">
-        <div className="z-10">
-          <img
-            src={avatar}
-            alt="teacher image"
-            className="w-full max-w-[15rem] mx-auto rounded-md"
-          />
-        </div>
-        <div className="text-center mt-2 space-y-2 text-zinc-800">
-          <h2 className="text-lg font-bold">আব্দুল্লাহ আল মামুন</h2>
-          <p className="text-sm">প্রধান শিক্ষক</p>
-          <p className="text-sm">ফরিদপুর জিলা স্কুল</p>
-        </div>
-        <hr className=" text-zinc-800 mt-2" />
-        <p className="pt-3 text-zinc-800">
-          নিশ্বয় আল্লাহ মানুষ এবং জীন সৃষ্টি করেছেন একমাত্র তার ইবাদাত করার
-          জন্য। (আল কোরআন)
-        </p>
-      </div>
+      <HeadmasterInformation />
 
       <div className="bg-primary-20/70 p-5 rounded-md shadow-md shadow-primary-20">
         <h1 className="text-2xl font-semibold  text-center mb-6">
