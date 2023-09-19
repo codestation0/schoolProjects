@@ -129,6 +129,14 @@ const AdminDashboard = () => {
                   Add School Info
                 </li>
               </NavLink>
+              <NavLink
+                to={"/dashboard/add-instituteimages"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  Add School Images
+                </li>
+              </NavLink>
             </ul>
           </div>
 

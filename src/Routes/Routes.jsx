@@ -6,6 +6,7 @@ import AddNotice from "../Dashboard/Add-notice/AddNotice";
 import AddRoutine from "../Dashboard/Add-routine/AddRoutine";
 import AddTeacher from "../Dashboard/Add-techer/AddTeacher";
 import AddHeadmaster from "../Dashboard/AddHeadmaster/AddHeadmaster";
+import AddInstituteImages from "../Dashboard/AddInstituteImages/AddInstituteImages";
 import AddPorshodPorishod from "../Dashboard/AddPorshodPorishod/AddPorshodPorishod";
 import AddSchoolInformation from "../Dashboard/AddSchoolInformation/AddSchoolInformation";
 import AddStuff from "../Dashboard/AddStuff/AddStuff";
@@ -121,6 +122,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/add-instituteinfo",
         element: <InstituteInfo />,
+      },
+      {
+        path: "/dashboard/add-instituteimages",
+        element: <AddInstituteImages />,
       },
       {
         path: "/dashboard/all-teacher",
