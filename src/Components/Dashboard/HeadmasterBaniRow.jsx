@@ -2,9 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import DeleteModal from "../Modal/DeleteModal";
-import SovapotirbaniEditModal from "../Modal/SovapotirbaniEditModal";
-const SovapotirbaniRow = ({ sovapoti = {}, refetch }) => {
-  const { _id, description } = sovapoti;
+import HeadmasterBaniModal from "../Modal/HeadmasterBnaiModal";
+const HeadmasterBaniRow = ({ bani = {}, refetch }) => {
+  const { _id, description } = bani;
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const closeModal = () => {
@@ -16,11 +16,11 @@ const SovapotirbaniRow = ({ sovapoti = {}, refetch }) => {
 
   const handleDelete = async (id) => {
     const res = await axios.delete(
-      `${import.meta.env.VITE_BASE_URL}/delete-sovapotirbani/${id}`
+      `${import.meta.env.VITE_BASE_URL}/delete-headmasterbani/${id}`
     );
 
     if (res.data.deletedCount > 0) {
-      toast.success("Teacher deleted successfully");
+      toast.success("Bani deleted successful");
       refetch();
     }
   };
@@ -31,20 +31,6 @@ const SovapotirbaniRow = ({ sovapoti = {}, refetch }) => {
 
   return (
     <tr className="odd:bg-zinc-300 hover:bg-zinc-400 hover:text-white transition">
-      {/* <td className="px-6 py-2">
-        <div className="flex items-center">
-          <div className="flex-shrink-0 h-12 w-12">
-            <img
-              className="h-full w-full rounded-md border border-zinc-400 block object-cover"
-              src={`${import.meta.env.VITE_BASE_URL}/${image}`}
-              alt={`Image of ${name}`}
-            />
-          </div>
-        </div>
-      </td>
-      <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{name}</div>
-      </td> */}
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="text-sm text-gray-900">
           {description.slice(0, 150) + "..."}
@@ -72,7 +58,7 @@ const SovapotirbaniRow = ({ sovapoti = {}, refetch }) => {
         id={_id}
       />
 
-      <SovapotirbaniEditModal
+      <HeadmasterBaniModal
         id={_id}
         isOpenEdit={isOpenEdit}
         closeModalEdit={closeModalEdit}
@@ -82,4 +68,4 @@ const SovapotirbaniRow = ({ sovapoti = {}, refetch }) => {
   );
 };
 
-export default SovapotirbaniRow;
+export default HeadmasterBaniRow;

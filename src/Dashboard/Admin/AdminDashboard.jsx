@@ -100,7 +100,15 @@ const AdminDashboard = () => {
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
-                  Add Porishod Porsho
+                  Add Porishod Porshod
+                </li>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/add-headmasterbai"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  Add Headmaster Bani
                 </li>
               </NavLink>
               <NavLink
@@ -151,6 +159,14 @@ const AdminDashboard = () => {
               >
                 <li onClick={toggleShowChild} className="">
                   HEADMASTER INFORMATION
+                </li>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/headmasterbani"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  HEADMASTER BANI
                 </li>
               </NavLink>
               <NavLink

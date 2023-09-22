@@ -15,7 +15,7 @@ const HeadmasterInformation = () => {
 
   return (
     <>
-      {headmaster.map((hmaster) => (
+      {headmaster?.map((hmaster) => (
         <div className="  bg-primary-20/70 rounded-md p-5" key={hmaster._id}>
           <div className="z-10">
             <img
@@ -26,8 +26,7 @@ const HeadmasterInformation = () => {
           </div>
           <div className="text-center mt-2 space-y-2 text-zinc-800">
             <h2 className="text-lg font-bold">{hmaster.name}</h2>
-            <p className="text-sm">প্রধান শিক্ষক</p>
-            <p className="text-sm">ফরিদপুর জিলা স্কুল</p>
+            <p className="text-sm">{hmaster.designation}</p>
           </div>
           <hr className=" text-zinc-800 mt-2" />
           <p className="pt-3 text-zinc-800">
