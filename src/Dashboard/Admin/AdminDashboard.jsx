@@ -100,7 +100,7 @@ const AdminDashboard = () => {
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
-                  Add Porishod Porshod
+                  Add Management Committee
                 </li>
               </NavLink>
               <NavLink
@@ -108,7 +108,7 @@ const AdminDashboard = () => {
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
-                  Add Headmaster Bani
+                  Add Headmaster Message
                 </li>
               </NavLink>
               <NavLink
@@ -116,7 +116,7 @@ const AdminDashboard = () => {
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
-                  Add Sovapotir Bani
+                  Add Sovapotir Message
                 </li>
               </NavLink>
 
@@ -143,6 +143,14 @@ const AdminDashboard = () => {
               >
                 <li onClick={toggleShowChild} className="">
                   Add School Images
+                </li>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/add-classinfo"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  Add Class Information
                 </li>
               </NavLink>
             </ul>
@@ -227,6 +235,14 @@ const AdminDashboard = () => {
               >
                 <li onClick={toggleShowChild} className="">
                   All School Information
+                </li>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/all-class-information"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  All Class Information
                 </li>
               </NavLink>
             </ul>

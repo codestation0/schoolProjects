@@ -5,6 +5,7 @@ import Home from "../Pages/Home";
 import AddNotice from "../Dashboard/Add-notice/AddNotice";
 import AddRoutine from "../Dashboard/Add-routine/AddRoutine";
 import AddTeacher from "../Dashboard/Add-techer/AddTeacher";
+import AddClassInfo from "../Dashboard/AddClassInfo/AddClassInfo";
 import AddHeadmaster from "../Dashboard/AddHeadmaster/AddHeadmaster";
 import AddHeadmasterBani from "../Dashboard/AddHeadmaster/AddHeadmasterBani";
 import AddInstituteImages from "../Dashboard/AddInstituteImages/AddInstituteImages";
@@ -12,8 +13,10 @@ import AddPorshodPorishod from "../Dashboard/AddPorshodPorishod/AddPorshodPorish
 import AddSchoolInformation from "../Dashboard/AddSchoolInformation/AddSchoolInformation";
 import AddStuff from "../Dashboard/AddStuff/AddStuff";
 import AdminDashboard from "../Dashboard/Admin/AdminDashboard";
+import ClassInfo from "../Pages/ClassInfo/ClassInfo";
 import AllSchoolInformationTable from "../Pages/Dashboard/AllSchoolInformationTable";
 import AllTeacher from "../Pages/Dashboard/AllTeacher";
+import ClassInfoTable from "../Pages/Dashboard/ClassInfoTable";
 import HeadmasterBaniTable from "../Pages/Dashboard/HeadmasterBaniTable";
 import HeadmasterInfo from "../Pages/Dashboard/HeadmasterInfo";
 import InstituteInfo from "../Pages/Dashboard/InstituteInfo";
@@ -63,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/রুটিন",
         element: <Routine />,
+      },
+      {
+        path: "/শাখার তথ্য",
+        element: <ClassInfo />,
       },
     ],
   },
@@ -122,6 +129,10 @@ const router = createBrowserRouter([
         element: <AddPorshodPorishod />,
       },
       {
+        path: "/dashboard/add-classinfo",
+        element: <AddClassInfo />,
+      },
+      {
         path: "/dashboard/all-stuff",
         element: <StuffTable />,
       },
@@ -160,6 +171,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/all-school-information",
         element: <AllSchoolInformationTable />,
+      },
+      {
+        path: "/dashboard/all-class-information",
+        element: <ClassInfoTable />,
       },
     ],
   },

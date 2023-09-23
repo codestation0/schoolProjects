@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useRef, useState } from "react";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { Fragment, useState } from "react";
 
 const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
   //   const [description, setDescription] = useState("");
@@ -126,23 +126,6 @@ const TeacherEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
                           />
                         </div>
 
-                        {/* <div className="mb-4">
-                          <label
-                            className="block text-primary-20/80 text-base font-bold mb-2"
-                            htmlFor="image"
-                          >
-                            Image
-                          </label>
-                          <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
-                            onChange={handleFileChange}
-                            type="file"
-                            id="image"
-                            name="image"
-                            accept="image/*"
-                          />
-                        </div>
-                         */}
                         <div className="mb-4">
                           <label
                             className="block text-primary-20/80 text-base font-bold mb-2"

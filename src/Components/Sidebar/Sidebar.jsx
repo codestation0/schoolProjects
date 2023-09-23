@@ -108,7 +108,7 @@ const Sidebar = () => {
       {/* TODO: ! NOTICE BOARD */}
       <div className="border-4 rounded-md border-primary-20/70">
         <h1 className="bg-primary-20/70 p-3 text-center text-2xl text-zinc-800 font-bold">
-          রুটিন বোর্ড
+          ক্লাস রুটিন
         </h1>
 
         <div>

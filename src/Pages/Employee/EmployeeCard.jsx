@@ -2,11 +2,11 @@ const EmployeeCard = ({ employee }) => {
   const { name, designation, image } = employee;
   return (
     <div className=" bg-gradient-to-r from-zinc-900 via-teal-900 to-zinc-500 rounded-lg shadow-lg overflow-hidden max-w-sm w-full mx-auto flex flex-col">
-      <div className="pt-5">
+      <div className="pt-5 max-h-40 h-full w-[9rem] mx-auto">
         <img
           src={`${import.meta.env.VITE_BASE_URL}/${image}`}
           alt=""
-          className="max-h-44 object-contain mx-auto"
+          className=" object-contain mx-auto w-full h-full"
         />
       </div>
       <div className="text-center p-3 text-zinc-50">
