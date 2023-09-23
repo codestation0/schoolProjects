@@ -28,11 +28,6 @@ const HeadmasterInformation = () => {
             <h2 className="text-lg font-bold">{hmaster.name}</h2>
             <p className="text-sm">{hmaster.designation}</p>
           </div>
-          <hr className=" text-zinc-800 mt-2" />
-          <p className="pt-3 text-zinc-800">
-            নিশ্বয় আল্লাহ মানুষ এবং জীন সৃষ্টি করেছেন একমাত্র তার ইবাদাত করার
-            জন্য। (আল কোরআন)
-          </p>
         </div>
       ))}
     </>
