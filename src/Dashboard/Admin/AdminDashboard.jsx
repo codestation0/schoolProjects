@@ -1,13 +1,16 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { RiMenu2Fill } from "react-icons/ri";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
+
 const AdminDashboard = () => {
   const [isShow, setIsShow] = useState(true);
   const [showChild, setShowChild] = useState(false);
   const toggleShowChild = () => {
     setShowChild(false);
   };
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const navigate = useNavigate();
   const email = localStorage.getItem("email");
@@ -15,6 +18,20 @@ const AdminDashboard = () => {
   const handleLogout = () => {
     localStorage.removeItem("email");
     navigate("/");
+  };
+
+  useEffect(() => {
+    fetchHeadmasterData();
+  });
+
+  const fetchHeadmasterData = async () => {
+    const res = await axios.get(
+      `${import.meta.env.VITE_BASE_URL}/all-headmasterinformation`
+    );
+
+    if (res.data.length > 0) {
+      setIsDisabled(true);
+    }
   };
   return (
     <div className="">
@@ -38,17 +55,16 @@ const AdminDashboard = () => {
                 <li className="">Home</li>
               </NavLink>
 
-              <div
-                className="active pending"
-                // className={({ isActive }) => (isActive ? "active" : "pending")}
-              >
+              <div className="active pending hover:bg-zinc-400">
                 <li
-                  onClick={() => setShowChild(true)}
+                  onClick={() => setShowChild((prev) => !prev)}
                   className="cursor-pointer"
                 >
                   Add Teacher
                 </li>
-                <ul className={`${!showChild && "h-0 overflow-hidden"}`}>
+                <ul
+                  className={`${!showChild && "h-0 overflow-hidden"} space-y-1`}
+                >
                   <NavLink
                     to={"/dashboard/add-teacher"}
                     className={({ isActive }) =>
@@ -63,7 +79,14 @@ const AdminDashboard = () => {
                       isActive ? "active" : "pending"
                     }
                   >
-                    <li>Headmaster</li>
+                    <button
+                      disabled={isDisabled}
+                      className={`w-full h-full  ${
+                        isDisabled && "text-zinc-200  cursor-not-allowed"
+                      }`}
+                    >
+                      Headmaster
+                    </button>
                   </NavLink>
                 </ul>
               </div>
