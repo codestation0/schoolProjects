@@ -28,6 +28,7 @@ const HeadmasterInformation = () => {
             <h2 className="text-lg font-bold">{hmaster.name}</h2>
             <p className="text-sm">{hmaster.designation}</p>
           </div>
+         
         </div>
       ))}
     </>
