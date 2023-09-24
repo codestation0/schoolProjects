@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Slider from "../Slider/Slider";
 import LastNews from "./LastNews";
 
@@ -21,6 +22,18 @@ const RightSide = () => {
 
       {/* সর্বশেষ  সংবাদ  */}
       <LastNews />
+=======
+import InstituteHistory from "../InstituteHistory/InstituteHistory";
+import Slider from "../Slider/Slider";
+
+const RightSide = () => {
+  return (
+    <div className="overflow-hidden z-10 order-1 md:order-6">
+      <Slider />
+      {/* স্কুলের ইতিহাস----------------- */}
+
+      <InstituteHistory />
+>>>>>>> 691dfebce376a02b08f0e668c045badee015bc1f
     </div>
   );
 };
