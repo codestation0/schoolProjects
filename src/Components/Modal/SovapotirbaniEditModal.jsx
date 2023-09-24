@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useRef, useState } from "react";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { Fragment, useRef, useState } from "react";
 const SovapotirbaniEditModal = ({
   refetch,
   closeModalEdit,
@@ -26,7 +26,7 @@ const SovapotirbaniEditModal = ({
   };
 
   const modalHandlerEdit = async (id) => {
-    await axios.patch(`http://localhost:5000/update-sovapotirbani/${id}`, {
+    await axios.patch(`${import.meta.env.VITE_BASE_URL}/${id}`, {
       description,
     });
 
