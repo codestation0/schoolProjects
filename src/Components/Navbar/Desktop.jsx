@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
 const navData = [
   {
-<<<<<<< HEAD
-    id: 1,
-=======
     id: 41,
->>>>>>> 691dfebce376a02b08f0e668c045badee015bc1f
     title: "প্রতিষ্ঠান পরিতিচি",
     children: ["পরিচিতি", "আসিতেছে"],
   },
@@ -17,25 +13,15 @@ const navData = [
   {
     id: 3,
     title: "পাঠদান সংক্রান্ত তথ্য",
-<<<<<<< HEAD
-    children: ["রুটিন", "পাঠ্যসূচী", "শাখার তথ্য", "নোটিশ"],
-  },
-];
-=======
     children: ["নোটিশ", "রুটিন", "পাঠ্যসূচী", "শাখার তথ্য"],
   },
 ];
 
->>>>>>> 691dfebce376a02b08f0e668c045badee015bc1f
 const Desktop = () => {
   return (
     <ul className="relative gap-2 items-center text-base hidden md:flex text-white">
       {" "}
-<<<<<<< HEAD
-      <Link to="/">
-=======
       <Link to="/" className="block">
->>>>>>> 691dfebce376a02b08f0e668c045badee015bc1f
         <li className="hover:bg-primary-30 py-1 px-2  rounded-md text-base hover:text-black cursor-pointer">
           হোম
         </li>

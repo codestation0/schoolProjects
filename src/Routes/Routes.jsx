@@ -2,14 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home";
 
-<<<<<<< HEAD
-import Teachers from "../Pages/Teachers/Teachers";
-import Introduction from "../Pages/InstituteIntroduction/Introduction";
-import Employee from "../Pages/Employee/Employee";
-import Notice from "../Pages/Notice/Notice";
-import RoutineList from "../Pages/Routine/RoutineList";
-import ErrorPage from "../Pages/ErrorPage";
-=======
 import AddNotice from "../Dashboard/Add-notice/AddNotice";
 import AddRoutine from "../Dashboard/Add-routine/AddRoutine";
 import AddTeacher from "../Dashboard/Add-techer/AddTeacher";
@@ -44,7 +36,6 @@ import Signup from "../Pages/Shared/Form/Signup";
 import Teachers from "../Pages/Teachers/Teachers";
 import WelcomePage from "../Pages/WelcomePage";
 import PrivetRoute from "./PrivetRoute";
->>>>>>> 691dfebce376a02b08f0e668c045badee015bc1f
 
 const router = createBrowserRouter([
   {
@@ -74,12 +65,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/রুটিন",
-<<<<<<< HEAD
-        element: <RoutineList />,
-      },
-    ],
-  },
-=======
         element: <Routine />,
       },
       {
@@ -88,14 +73,16 @@ const router = createBrowserRouter([
       },
     ],
   },
-
+  // ************************don't do this url private*********** 
+  // (
+  //   <PrivetRoute>
+  //     <AdminDashboard />
+  //   </PrivetRoute>
+  // ),
+  // ************************don't do this url private***********
   {
     path: "/dashboard",
-    element: (
-      <PrivetRoute>
-        <AdminDashboard />
-      </PrivetRoute>
-    ),
+    element:<AdminDashboard />,
     children: [
       {
         path: "/dashboard",
@@ -201,7 +188,6 @@ const router = createBrowserRouter([
     path: "/sign-in",
     element: <Signin />,
   },
->>>>>>> 691dfebce376a02b08f0e668c045badee015bc1f
 ]);
 
 export default router;

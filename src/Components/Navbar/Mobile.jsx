@@ -1,9 +1,5 @@
 import { useState } from "react";
-<<<<<<< HEAD
-import { BiChevronRight, BiChevronDown } from "react-icons/bi";
-=======
 import { BiChevronDown, BiChevronRight } from "react-icons/bi";
->>>>>>> 691dfebce376a02b08f0e668c045badee015bc1f
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 const navData = [
@@ -20,11 +16,7 @@ const navData = [
   {
     id: 3,
     title: "পাঠদান সংক্রান্ত তথ্য",
-<<<<<<< HEAD
-    children: ["শাখার তথ্য", "রুটিন", "পাঠ্যসূচী", "নোটিশ"],
-=======
     children: ["নোটিশ", "রুটিন", "শাখার তথ্য", "পাঠ্যসূচী"],
->>>>>>> 691dfebce376a02b08f0e668c045badee015bc1f
   },
 ];
 
@@ -39,11 +31,7 @@ const Mobile = ({ showNav, handleNavbar }) => {
 
   return (
     <div
-<<<<<<< HEAD
-      className={`min-h-screen w-[70%] bg-zinc-50 shadow-md fixed top-0 right-0 transition-all duration-500 md:hidden z-50 ${
-=======
       className={`min-h-screen w-[70%] bg-zinc-50 shadow-md fixed top-0 right-0 transition-all duration-500 md:hidden z-50  ${
->>>>>>> 691dfebce376a02b08f0e668c045badee015bc1f
         showNav && "translate-x-[110%]"
       }`}
     >
