@@ -13,7 +13,7 @@ const Notice = () => {
     queryKey: ["routines"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/all-routine`
+        `${import.meta.env.VITE_BASE_URL}/all-notice`
       );
       return res.data;
     },
@@ -29,7 +29,7 @@ const Notice = () => {
         {/* TODO: LAST NEWS  */}
 
         <div className="border-4 rounded-md border-primary-20/70 mb-8 h-max">
-          <h1 className="bg-primary-20/70 p-3 text-center text-2xl text-zinc-900">
+          <h1 className="bg-primary-20/70 p-3 text-center text-2xl text-white">
             নোটিশ বোর্ড
           </h1>
 

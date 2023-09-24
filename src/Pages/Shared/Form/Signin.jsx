@@ -27,7 +27,7 @@ const Signin = () => {
       password: formData.password,
     };
 
-    const response = await fetch("http://localhost:5000/login", {
+    const response = await fetch("https://school-projects-server.vercel.app/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -1,9 +1,11 @@
+import { Navigate } from "react-router-dom";
 
-const PrivetRoute = ({children}) => {
+const PrivetRoute = ({ children }) => {
+  const email = localStorage.getItem("email");
+  if (email) {
+    return children;
+  }
+  return <Navigate to={"/"} />;
+};
 
-  return (
-    children
-  )
-}
-
-export default PrivetRoute
+export default PrivetRoute;
