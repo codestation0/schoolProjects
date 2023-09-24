@@ -29,7 +29,7 @@ const Teachers = () => {
               আমাদের সম্মানীয় শিক্ষকমণ্ডলীগন
             </h1>
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 ">
-              {teachers.map((teacher) => (
+              {teachers?.map((teacher) => (
                 <TeacherCard key={teacher._id} teacher={teacher} />
               ))}
             </div>

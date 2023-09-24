@@ -73,7 +73,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // ************************don't do this url private*********** 
+  // ************************don't do this url private***********
   // (
   //   <PrivetRoute>
   //     <AdminDashboard />
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
   // ************************don't do this url private***********
   {
     path: "/dashboard",
-    element:<AdminDashboard />,
+    element: <AdminDashboard />,
     children: [
       {
         path: "/dashboard",

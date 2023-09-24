@@ -21,7 +21,7 @@ const Introduction = () => {
         <InstituteHistory />
 
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {instituteinformation[0]?.image.map((img, i) => (
+          {instituteinformation[0]?.image?.map((img, i) => (
             <div key={img + "" + i} className="rounded-md overflow-hidden">
               <img
                 src={`${import.meta.env.VITE_BASE_URL}/${img.filename}`}
