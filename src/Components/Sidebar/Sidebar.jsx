@@ -87,12 +87,12 @@ const Sidebar = () => {
               </div>
             </div>
             <p className="text-sm text-zinc-800 text-justify leading-6 tracking-tighter lg:text-start">
-              {headmasterbani[0]?.description.length > 180 && !showMore ? (
+              {headmasterbani[0]?.description?.length > 180 && !showMore ? (
                 <>{headmasterbani[0]?.description.slice(0, 200)}...</>
               ) : (
                 headmasterbani[0]?.description
               )}
-              {headmasterbani[0]?.description.length > 180 && (
+              {headmasterbani[0]?.description?.length > 180 && (
                 <button
                   onClick={() => setShowMore(!showMore)}
                   className="border bg-rose-500 border-none text-white py-1 px-2 text-xs rounded-sm ml-3"
