@@ -2,15 +2,15 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import DeleteModal from "../../Components/Modal/DeleteModal";
-import PorishodEditModal from "../Modal/PorishodEditModal";
-const PorishodRow = ({ porishod, refetch }) => {
-  const { _id, name, image, phone } = porishod;
+import CommitteeModal from "../Modal/CommitteeModal";
+const CommitteeRow = ({ committee, refetch }) => {
+  const { _id, name, image, phone } = committee;
   const [isOpen, setIsOpen] = useState(false);
   const [isEditOpen, setEditIsOpen] = useState(false);
 
   const handleDelete = async (id) => {
     const res = await axios.delete(
-      `${import.meta.env.VITE_BASE_URL}/delete-president/${id}`
+      `${import.meta.env.VITE_BASE_URL}/delete-committee/${id}`
     );
 
     if (res.data.deletedCount > 0) {
@@ -71,7 +71,7 @@ const PorishodRow = ({ porishod, refetch }) => {
         isOpen={isOpen}
         id={_id}
       />
-      <PorishodEditModal
+      <CommitteeModal
         closeModalEdit={closeModalEdit}
         isOpenEdit={isEditOpen}
         id={_id}
@@ -81,4 +81,4 @@ const PorishodRow = ({ porishod, refetch }) => {
   );
 };
 
-export default PorishodRow;
+export default CommitteeRow;

@@ -7,10 +7,13 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 const AdminDashboard = () => {
   const [isShow, setIsShow] = useState(true);
   const [showChild, setShowChild] = useState(false);
+  const [isShowCommittee, setIsShowCommittee] = useState(false);
   const toggleShowChild = () => {
     setShowChild(false);
+    setIsShowCommittee(false);
   };
   const [isDisabled, setIsDisabled] = useState(false);
+  const [disabledPresident, setDisabledPresident] = useState(false);
 
   const navigate = useNavigate();
   const email = localStorage.getItem("email");
@@ -22,6 +25,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     fetchHeadmasterData();
+    fetchPresidentData();
   });
 
   const fetchHeadmasterData = async () => {
@@ -31,6 +35,15 @@ const AdminDashboard = () => {
 
     if (res.data.length > 0) {
       setIsDisabled(true);
+    }
+  };
+  const fetchPresidentData = async () => {
+    const res = await axios.get(
+      `${import.meta.env.VITE_BASE_URL}/sovapotirbani`
+    );
+
+    if (res.data.length > 0) {
+      setDisabledPresident(true);
     }
   };
   return (
@@ -118,14 +131,45 @@ const AdminDashboard = () => {
                 </li>
               </NavLink>
 
-              <NavLink
+              {/* <NavLink
                 to={"/dashboard/add-porishod"}
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
                   Add Management Committee
                 </li>
-              </NavLink>
+              </NavLink> */}
+              <div className="active pending hover:bg-zinc-400">
+                <li
+                  onClick={() => setIsShowCommittee((prev) => !prev)}
+                  className="cursor-pointer"
+                >
+                  Add Management Committee
+                </li>
+                <ul
+                  className={`${
+                    !isShowCommittee && "h-0 overflow-hidden"
+                  } space-y-1`}
+                >
+                  <NavLink
+                    to={"/dashboard/add-president"}
+                    className={({ isActive }) =>
+                      isActive ? "active" : "pending"
+                    }
+                  >
+                    <li className=""> Add Management Committee President</li>
+                  </NavLink>
+                  <NavLink
+                    to={"/dashboard/add-othermember"}
+                    className={({ isActive }) =>
+                      isActive ? "active" : "pending"
+                    }
+                  >
+                    <li>Add Management Committee Other Member</li>
+                  </NavLink>
+                </ul>
+              </div>
+
               <NavLink
                 to={"/dashboard/add-headmasterbai"}
                 className={({ isActive }) => (isActive ? "active" : "pending")}
@@ -138,9 +182,15 @@ const AdminDashboard = () => {
                 to={"/dashboard/add-sovapotirbani"}
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
-                <li onClick={toggleShowChild} className="">
-                  Add Sovapotir Message
-                </li>
+                <button
+                  disabled={disabledPresident}
+                  onClick={toggleShowChild}
+                  className={`${
+                    disabledPresident && "text-zinc-300 cursor-not-allowed"
+                  }`}
+                >
+                  Add President Message
+                </button>
               </NavLink>
 
               <NavLink
@@ -148,7 +198,7 @@ const AdminDashboard = () => {
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
-                  Add Institute Info
+                  Add Institute History
                 </li>
               </NavLink>
 
@@ -157,7 +207,7 @@ const AdminDashboard = () => {
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
-                  Add School Info
+                  Add Institute Info
                 </li>
               </NavLink>
               <NavLink
@@ -165,7 +215,7 @@ const AdminDashboard = () => {
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
-                  Add School Images
+                  Add Institute Images
                 </li>
               </NavLink>
               <NavLink
@@ -197,7 +247,7 @@ const AdminDashboard = () => {
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
-                  HEADMASTER BANI
+                  Headmaster Message
                 </li>
               </NavLink>
               <NavLink
@@ -222,7 +272,16 @@ const AdminDashboard = () => {
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
-                  Porishod Porshod
+                  Committee President
+                </li>
+              </NavLink>
+
+              <NavLink
+                to={"/dashboard/all-members"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  Committee Members
                 </li>
               </NavLink>
 
@@ -231,7 +290,7 @@ const AdminDashboard = () => {
                 className={({ isActive }) => (isActive ? "active" : "pending")}
               >
                 <li onClick={toggleShowChild} className="">
-                  Sovapotir Bani
+                  President Message
                 </li>
               </NavLink>
 

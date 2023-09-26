@@ -24,11 +24,19 @@ const Employee = () => {
             <h1 className="text-center text-xl sm:text-2xl font-bold bg-primary-20/70 p-2 text-white my-3 rounded-md">
               আমাদের কর্মচারীগণ
             </h1>
-            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 ">
-              {employees?.map((employee) => (
-                <EmployeeCard key={employee.id} employee={employee} />
-              ))}
-            </div>
+            {employees && Array.isArray(employees) && employees.length > 0 ? (
+              <>
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 ">
+                  {employees?.map((employee) => (
+                    <EmployeeCard key={employee._id} employee={employee} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <p>No Data Available</p>
+              </>
+            )}
           </div>
         </div>
       </Container>

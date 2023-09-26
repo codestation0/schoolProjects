@@ -6,6 +6,8 @@ import AddNotice from "../Dashboard/Add-notice/AddNotice";
 import AddRoutine from "../Dashboard/Add-routine/AddRoutine";
 import AddTeacher from "../Dashboard/Add-techer/AddTeacher";
 import AddClassInfo from "../Dashboard/AddClassInfo/AddClassInfo";
+import AddCommitteeOtherMember from "../Dashboard/AddCommitteeOtherMember/AddCommitteeOtherMember";
+import AddCommitteePresident from "../Dashboard/AddCommitteePresident/AddCommitteePresident";
 import AddHeadmaster from "../Dashboard/AddHeadmaster/AddHeadmaster";
 import AddHeadmasterBani from "../Dashboard/AddHeadmaster/AddHeadmasterBani";
 import AddInstituteImages from "../Dashboard/AddInstituteImages/AddInstituteImages";
@@ -17,6 +19,7 @@ import ClassInfo from "../Pages/ClassInfo/ClassInfo";
 import AllSchoolInformationTable from "../Pages/Dashboard/AllSchoolInformationTable";
 import AllTeacher from "../Pages/Dashboard/AllTeacher";
 import ClassInfoTable from "../Pages/Dashboard/ClassInfoTable";
+import CommitteeTable from "../Pages/Dashboard/CommitteeTable";
 import HeadmasterBaniTable from "../Pages/Dashboard/HeadmasterBaniTable";
 import HeadmasterInfo from "../Pages/Dashboard/HeadmasterInfo";
 import InstituteInfo from "../Pages/Dashboard/InstituteInfo";
@@ -35,7 +38,6 @@ import Signin from "../Pages/Shared/Form/Signin";
 import Signup from "../Pages/Shared/Form/Signup";
 import Teachers from "../Pages/Teachers/Teachers";
 import WelcomePage from "../Pages/WelcomePage";
-import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -105,6 +107,14 @@ const router = createBrowserRouter([
         element: <AddHeadmaster />,
       },
       {
+        path: "/dashboard/add-president",
+        element: <AddCommitteePresident />,
+      },
+      {
+        path: "/dashboard/add-othermember",
+        element: <AddCommitteeOtherMember />,
+      },
+      {
         path: "/dashboard/add-headmasterbai",
         element: <AddHeadmasterBani />,
       },
@@ -165,6 +175,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/all-porishod",
         element: <PorishodTable />,
+      },
+      {
+        path: "/dashboard/all-members",
+        element: <CommitteeTable />,
       },
       {
         path: "/dashboard/headmasterbani",

@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Fragment, useState } from "react";
 
-const PorishodEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
+const CommitteeModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
   const [formData, setFormData] = useState({
     name: "",
 
@@ -15,7 +15,7 @@ const PorishodEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
     queryKey: ["single-president", id],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/single-president/${id}`
+        `${import.meta.env.VITE_BASE_URL}/single-committee/${id}`
       );
       return res.data;
     },
@@ -30,7 +30,7 @@ const PorishodEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
   // Handle form submission (you can implement the submission logic here)
   const modalHandlerEdit = async () => {
     await axios.patch(
-      `${import.meta.env.VITE_BASE_URL}/update-president/${id}`,
+      `${import.meta.env.VITE_BASE_URL}/update-committee/${id}`,
       formData,
       {
         headers: {
@@ -167,4 +167,4 @@ const PorishodEditModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
   );
 };
 
-export default PorishodEditModal;
+export default CommitteeModal;

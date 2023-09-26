@@ -28,11 +28,19 @@ const Teachers = () => {
             <h1 className="text-center text-xl sm:text-2xl font-bold bg-primary-20/70 p-2 text-white my-3 rounded-md">
               আমাদের সম্মানীয় শিক্ষকমণ্ডলীগন
             </h1>
-            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 ">
-              {teachers?.map((teacher) => (
-                <TeacherCard key={teacher._id} teacher={teacher} />
-              ))}
-            </div>
+            {teachers && Array.isArray(teachers) && teachers.length > 0 ? (
+              <>
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 ">
+                  {teachers?.map((teacher) => (
+                    <TeacherCard key={teacher._id} teacher={teacher} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <p>No Data Available</p>
+              </>
+            )}
           </div>
         </div>
       </Container>

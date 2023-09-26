@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import PorishodRow from "../../Components/Dashboard/PorishodRow";
+import CommitteeRow from "../../Components/Dashboard/CommitteeRow";
 import Container from "../Shared/Container";
 
-const PorishodTable = () => {
-  const { data: presidents = [], refetch } = useQuery({
-    queryKey: ["presidents"],
+const CommitteeTable = () => {
+  const { data: committees = [], refetch } = useQuery({
+    queryKey: ["committees"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/all-president`
+        `${import.meta.env.VITE_BASE_URL}/all-committee`
       );
 
       return res.data;
@@ -17,7 +17,7 @@ const PorishodTable = () => {
 
   return (
     <Container>
-      {presidents && Array.isArray(presidents) && presidents.length > 0 ? (
+      {committees && Array.isArray(committees) && committees.length > 0 ? (
         <>
           <div className="overflow-x-auto bg-zinc-200 ">
             <table className="min-w-full divide-y divide-gray-200">
@@ -50,10 +50,10 @@ const PorishodTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {presidents.map((porishod) => (
-                  <PorishodRow
-                    key={porishod._id}
-                    porishod={porishod}
+                {committees.map((committee) => (
+                  <CommitteeRow
+                    key={committee._id}
+                    committee={committee}
                     refetch={refetch}
                   />
                 ))}
@@ -72,4 +72,4 @@ const PorishodTable = () => {
   );
 };
 
-export default PorishodTable;
+export default CommitteeTable;
