@@ -1,42 +1,46 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Fragment, useRef, useState } from "react";
-const SovapotirbaniEditModal = ({
-  refetch,
-  closeModalEdit,
-  isOpenEdit,
-  id,
-}) => {
-  const [description, setDescription] = useState("");
-  const inputRef = useRef();
+import { Fragment, useState } from "react";
 
-  const { data: defaultDesc = {}, refetch: defaultRefetch } = useQuery({
-    queryKey: ["single-sovapotirbani", id],
+const ImportantLinkModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
+  const [formData, setFormData] = useState({
+    schoolName: "",
+    address: "",
+    phone: "",
+    email: "",
+  });
+
+  const { data: defaultInfo = {}, refetch: defaultRefetch } = useQuery({
+    queryKey: ["single-importantlinks", id],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/single-sovapotirbani/${id}`
+        `${import.meta.env.VITE_BASE_URL}/single-importantlinks/${id}`
       );
-      return res.data.description;
+      return res.data;
     },
   });
 
-  const handleInputChange = () => {
-    setDescription(inputRef.current.value);
+  // Handle form input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
-  const modalHandlerEdit = async (id) => {
+  // Handle form submission (you can implement the submission logic here)
+  const modalHandlerEdit = async () => {
     await axios.patch(
-      `${import.meta.env.VITE_BASE_URL}/update-sovapotirbani/${id}`,
-      {
-        description,
-      }
+      `${import.meta.env.VITE_BASE_URL}/update-importantlinks/${id}`,
+      formData
     );
-
-    refetch();
-    defaultRefetch();
     closeModalEdit();
   };
+
+  defaultRefetch();
+  refetch();
 
   return (
     <Transition appear show={isOpenEdit} as={Fragment}>
@@ -72,35 +76,57 @@ const SovapotirbaniEditModal = ({
                   Are you sure?
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">You edit your content</p>
+                  <p className="text-sm text-gray-500">
+                    You edit your information
+                  </p>
                 </div>
                 <hr className="mt-8 " />
                 <div className="mb-4">
-                  <label
-                    className="block text-primary-20/80 text-base font-bold mb-2"
-                    htmlFor="message"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-20/80 leading-tight focus:outline-none focus:shadow-outline"
-                    ref={inputRef}
-                    required
-                    type="text"
-                    id="message"
-                    name="message"
-                    defaultValue={defaultDesc}
-                    onChange={handleInputChange}
-                    cols="20"
-                    rows="10"
-                  ></textarea>
+                  <div className="max-w-lg mx-auto mt-8 ">
+                    <form className="space-y-6 bg-white p-5 rounded-md shadow-md">
+                      <div>
+                        <label
+                          htmlFor="name"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Link name
+                        </label>
+                        <input
+                          required
+                          type="text"
+                          id="name"
+                          name="name"
+                          onChange={handleChange}
+                          className="mt-1 p-2 w-full border rounded-md"
+                          defaultValue={defaultInfo.name}
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="http"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Http
+                        </label>
+                        <input
+                          required
+                          type="text"
+                          id="http"
+                          name="http"
+                          onChange={handleChange}
+                          className="mt-1 p-2 w-full border rounded-md"
+                          defaultValue={defaultInfo.http}
+                        />
+                      </div>
+                    </form>
+                  </div>
                 </div>
 
                 <div className="flex mt-2 justify-around">
                   <button
                     type="button"
                     className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-                    onClick={() => modalHandlerEdit(id)}
+                    onClick={modalHandlerEdit}
                   >
                     Yes
                   </button>
@@ -121,4 +147,4 @@ const SovapotirbaniEditModal = ({
   );
 };
 
-export default SovapotirbaniEditModal;
+export default ImportantLinkModal;

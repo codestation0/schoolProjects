@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import TeacherRow from "../../Components/Dashboard/TeacherRow";
+import AchievementRow from "../../Components/Dashboard/AchievementRow";
 import Container from "../Shared/Container";
 
-const AllTeacher = () => {
-  const { data: teachers = [], refetch } = useQuery({
-    queryKey: ["teachers"],
+const AchievementTable = () => {
+  const { data: achievement = [], refetch } = useQuery({
+    queryKey: ["achievement"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/all-teachers`
+        `${import.meta.env.VITE_BASE_URL}/achievement`
       );
 
       return res.data;
@@ -17,7 +17,7 @@ const AllTeacher = () => {
 
   return (
     <Container>
-      {teachers && Array.isArray(teachers) && teachers.length > 0 ? (
+      {achievement && Array.isArray(achievement) && achievement.length > 0 ? (
         <>
           <div className="overflow-x-auto bg-zinc-200 ">
             <table className="min-w-full divide-y divide-gray-200">
@@ -27,19 +27,7 @@ const AllTeacher = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider"
                   >
-                    Image
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider"
-                  >
-                    Name
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider"
-                  >
-                    Phone
+                    Achievement
                   </th>
                   <th
                     scope="col"
@@ -50,10 +38,10 @@ const AllTeacher = () => {
                 </tr>
               </thead>
               <tbody>
-                {teachers.map((teacher) => (
-                  <TeacherRow
-                    key={teacher._id}
-                    communication={teacher}
+                {achievement.map((achievement) => (
+                  <AchievementRow
+                    key={achievement._id}
+                    achievement={achievement}
                     refetch={refetch}
                   />
                 ))}
@@ -72,4 +60,4 @@ const AllTeacher = () => {
   );
 };
 
-export default AllTeacher;
+export default AchievementTable;

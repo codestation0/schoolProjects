@@ -14,6 +14,7 @@ const AdminDashboard = () => {
   };
   const [isDisabled, setIsDisabled] = useState(false);
   const [disabledPresident, setDisabledPresident] = useState(false);
+  const [isShowCommunication, setIsShowCommunication] = useState(false);
 
   const navigate = useNavigate();
   const email = localStorage.getItem("email");
@@ -26,6 +27,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     fetchHeadmasterData();
     fetchPresidentData();
+    fetchInstituteCommunication();
   });
 
   const fetchHeadmasterData = async () => {
@@ -44,6 +46,16 @@ const AdminDashboard = () => {
 
     if (res.data.length > 0) {
       setDisabledPresident(true);
+    }
+  };
+
+  const fetchInstituteCommunication = async () => {
+    const res = await axios.get(
+      `${import.meta.env.VITE_BASE_URL}/communication`
+    );
+
+    if (res.data.length > 0) {
+      setIsShowCommunication(true);
     }
   };
   return (
@@ -226,6 +238,38 @@ const AdminDashboard = () => {
                   Add Class Information
                 </li>
               </NavLink>
+
+              <NavLink
+                to={"/dashboard/add-communicationinfo"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <button
+                  disabled={isShowCommunication}
+                  onClick={toggleShowChild}
+                  className={`${
+                    isShowCommunication && "text-zinc-300 cursor-not-allowed"
+                  }`}
+                >
+                  Add Communication Information
+                </button>
+              </NavLink>
+
+              <NavLink
+                to={"/dashboard/add-importantlinks"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  Add Important Links
+                </li>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/add-achievement"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  Add Achievement
+                </li>
+              </NavLink>
             </ul>
           </div>
 
@@ -325,6 +369,30 @@ const AdminDashboard = () => {
               >
                 <li onClick={toggleShowChild} className="">
                   All Class Information
+                </li>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/all-communication-information"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  Communication Information
+                </li>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/all-important-link"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  Important Links
+                </li>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/all-achievement"}
+                className={({ isActive }) => (isActive ? "active" : "pending")}
+              >
+                <li onClick={toggleShowChild} className="">
+                  Achievements
                 </li>
               </NavLink>
             </ul>

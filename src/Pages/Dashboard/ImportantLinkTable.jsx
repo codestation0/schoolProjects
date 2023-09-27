@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import TeacherRow from "../../Components/Dashboard/TeacherRow";
+import ImportantLinkRow from "../../Components/Dashboard/ImportantLinkRow";
 import Container from "../Shared/Container";
 
-const AllTeacher = () => {
-  const { data: teachers = [], refetch } = useQuery({
-    queryKey: ["teachers"],
+const ImportantLinkTable = () => {
+  const { data: importantLink = [], refetch } = useQuery({
+    queryKey: ["importantlinks"],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/all-teachers`
+        `${import.meta.env.VITE_BASE_URL}/importantlinks`
       );
 
       return res.data;
@@ -17,7 +17,9 @@ const AllTeacher = () => {
 
   return (
     <Container>
-      {teachers && Array.isArray(teachers) && teachers.length > 0 ? (
+      {importantLink &&
+      Array.isArray(importantLink) &&
+      importantLink.length > 0 ? (
         <>
           <div className="overflow-x-auto bg-zinc-200 ">
             <table className="min-w-full divide-y divide-gray-200">
@@ -27,20 +29,15 @@ const AllTeacher = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider"
                   >
-                    Image
+                    Link Name
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider"
                   >
-                    Name
+                    Http
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider"
-                  >
-                    Phone
-                  </th>
+
                   <th
                     scope="col"
                     className="px-6 py-3 text-center text-xs sm:text-base font-bold text-gray-500 uppercase tracking-wider "
@@ -50,10 +47,10 @@ const AllTeacher = () => {
                 </tr>
               </thead>
               <tbody>
-                {teachers.map((teacher) => (
-                  <TeacherRow
-                    key={teacher._id}
-                    communication={teacher}
+                {importantLink.map((link) => (
+                  <ImportantLinkRow
+                    key={link._id}
+                    link={link}
                     refetch={refetch}
                   />
                 ))}
@@ -72,4 +69,4 @@ const AllTeacher = () => {
   );
 };
 
-export default AllTeacher;
+export default ImportantLinkTable;

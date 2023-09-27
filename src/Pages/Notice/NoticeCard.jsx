@@ -5,14 +5,12 @@ const NoticeCard = ({ routine }) => {
   return (
     <>
       <div className="flex justify-between items-center   bg-primary-30 py-2 px-1 border-b-2 border-blue-700 border-dotted mb-2">
-        <div>
+        <div className="flex items-center gap-2 text-primary-20">
+          <BsFileEarmarkPdf />
           <p className="text-xl font-bold">{selectedClass}</p>
-          <p className="text-lg flex items-center gap-1 text-red-500">
-            <BsFileEarmarkPdf color="red" /> {filename}
-          </p>
         </div>
         <div className="flex flex-col gap-3">
-          <button className="text-white bg-primary-20  transition py-1 px-2 rounded-md drop-shadow-md uppercase">
+          <button className="text-white bg-primary-20  transition py-1 px-2 rounded-md drop-shadow-md uppercase text-sm">
             <a href="" download={filename}>
               {" "}
               Download

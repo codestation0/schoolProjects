@@ -5,23 +5,29 @@ import Home from "../Pages/Home";
 import AddNotice from "../Dashboard/Add-notice/AddNotice";
 import AddRoutine from "../Dashboard/Add-routine/AddRoutine";
 import AddTeacher from "../Dashboard/Add-techer/AddTeacher";
+import AddAchievement from "../Dashboard/AddAchivement/AddAchievement";
 import AddClassInfo from "../Dashboard/AddClassInfo/AddClassInfo";
 import AddCommitteeOtherMember from "../Dashboard/AddCommitteeOtherMember/AddCommitteeOtherMember";
 import AddCommitteePresident from "../Dashboard/AddCommitteePresident/AddCommitteePresident";
+import AddCommunicationInfo from "../Dashboard/AddComunicationInformaion/AddCommunicationInfo";
 import AddHeadmaster from "../Dashboard/AddHeadmaster/AddHeadmaster";
 import AddHeadmasterBani from "../Dashboard/AddHeadmaster/AddHeadmasterBani";
+import AddImportantLinks from "../Dashboard/AddImportantLinks/AddImportantLinks";
 import AddInstituteImages from "../Dashboard/AddInstituteImages/AddInstituteImages";
 import AddPorshodPorishod from "../Dashboard/AddPorshodPorishod/AddPorshodPorishod";
 import AddSchoolInformation from "../Dashboard/AddSchoolInformation/AddSchoolInformation";
 import AddStuff from "../Dashboard/AddStuff/AddStuff";
 import AdminDashboard from "../Dashboard/Admin/AdminDashboard";
 import ClassInfo from "../Pages/ClassInfo/ClassInfo";
+import AchievementTable from "../Pages/Dashboard/AchievementTable";
 import AllSchoolInformationTable from "../Pages/Dashboard/AllSchoolInformationTable";
 import AllTeacher from "../Pages/Dashboard/AllTeacher";
 import ClassInfoTable from "../Pages/Dashboard/ClassInfoTable";
 import CommitteeTable from "../Pages/Dashboard/CommitteeTable";
+import CommunicationTable from "../Pages/Dashboard/CommunicationTable";
 import HeadmasterBaniTable from "../Pages/Dashboard/HeadmasterBaniTable";
 import HeadmasterInfo from "../Pages/Dashboard/HeadmasterInfo";
+import ImportantLinkTable from "../Pages/Dashboard/ImportantLinkTable";
 import InstituteInfo from "../Pages/Dashboard/InstituteInfo";
 import NoticeTable from "../Pages/Dashboard/NoticeTable";
 import PorishodTable from "../Pages/Dashboard/PorishodTable";
@@ -157,6 +163,20 @@ const router = createBrowserRouter([
         element: <AddInstituteImages />,
       },
       {
+        path: "/dashboard/add-communicationinfo",
+        element: <AddCommunicationInfo />,
+      },
+      {
+        path: "/dashboard/add-importantlinks",
+        element: <AddImportantLinks />,
+      },
+      {
+        path: "/dashboard/add-achievement",
+        element: <AddAchievement />,
+      },
+
+      // UPDATE & DELETE ROUTES
+      {
         path: "/dashboard/all-teacher",
         element: <AllTeacher />,
       },
@@ -191,6 +211,18 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/all-class-information",
         element: <ClassInfoTable />,
+      },
+      {
+        path: "/dashboard/all-communication-information",
+        element: <CommunicationTable />,
+      },
+      {
+        path: "/dashboard/all-important-link",
+        element: <ImportantLinkTable />,
+      },
+      {
+        path: "/dashboard/all-achievement",
+        element: <AchievementTable />,
       },
     ],
   },

@@ -2,34 +2,29 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Fragment, useRef, useState } from "react";
-const SovapotirbaniEditModal = ({
-  refetch,
-  closeModalEdit,
-  isOpenEdit,
-  id,
-}) => {
-  const [description, setDescription] = useState("");
+const AchievementModal = ({ refetch, closeModalEdit, isOpenEdit, id }) => {
+  const [achievement, setAchievement] = useState("");
   const inputRef = useRef();
 
   const { data: defaultDesc = {}, refetch: defaultRefetch } = useQuery({
-    queryKey: ["single-sovapotirbani", id],
+    queryKey: ["single-achievement", id],
     queryFn: async () => {
       const res = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/single-sovapotirbani/${id}`
+        `${import.meta.env.VITE_BASE_URL}/single-achievement/${id}`
       );
-      return res.data.description;
+      return res.data;
     },
   });
 
   const handleInputChange = () => {
-    setDescription(inputRef.current.value);
+    setAchievement(inputRef.current.value);
   };
 
   const modalHandlerEdit = async (id) => {
     await axios.patch(
-      `${import.meta.env.VITE_BASE_URL}/update-sovapotirbani/${id}`,
+      `${import.meta.env.VITE_BASE_URL}/update-achievement/${id}`,
       {
-        description,
+        achievement,
       }
     );
 
@@ -37,6 +32,7 @@ const SovapotirbaniEditModal = ({
     defaultRefetch();
     closeModalEdit();
   };
+
 
   return (
     <Transition appear show={isOpenEdit} as={Fragment}>
@@ -89,7 +85,7 @@ const SovapotirbaniEditModal = ({
                     type="text"
                     id="message"
                     name="message"
-                    defaultValue={defaultDesc}
+                    defaultValue={defaultDesc.achievement}
                     onChange={handleInputChange}
                     cols="20"
                     rows="10"
@@ -121,4 +117,4 @@ const SovapotirbaniEditModal = ({
   );
 };
 
-export default SovapotirbaniEditModal;
+export default AchievementModal;
