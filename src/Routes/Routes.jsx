@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home";
 
+import CommitteeMembers from "../Components/CommitteeMembers/CommitteeMembers";
+import PresidentMessage from "../Components/CommitteePresidentMessage/PresidentMessage";
 import AddNotice from "../Dashboard/Add-notice/AddNotice";
 import AddRoutine from "../Dashboard/Add-routine/AddRoutine";
 import AddTeacher from "../Dashboard/Add-techer/AddTeacher";
@@ -64,8 +66,16 @@ const router = createBrowserRouter([
         element: <Employee />,
       },
       {
+        path: "/কমিটি-সদস্য",
+        element: <CommitteeMembers />,
+      },
+      {
         path: "/পরিচিতি",
         element: <Introduction />,
+      },
+      {
+        path: "/সভাপতির-বানী",
+        element: <PresidentMessage />,
       },
       {
         path: "/নোটিশ",

@@ -72,6 +72,7 @@ const Sidebar = () => {
         </div>
       )}
 
+      {/* TODO: Notice */}
       <Notice />
     </div>
   );

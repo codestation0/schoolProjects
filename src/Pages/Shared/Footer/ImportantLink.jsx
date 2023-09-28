@@ -24,7 +24,12 @@ const ImportantLink = () => {
             <ul className="text-zinc-200 space-y-2" key={data._id}>
               <li className="flex items-center hover:underline font-thin cursor-pointer">
                 <HiChevronRight size={20} className="block mt-1" />
-                <a href={data.item.http} className="block">
+                <a
+                  href={data.item.http}
+                  target="_blank"
+                  className="block"
+                  rel="noreferrer"
+                >
                   {data.item.name}
                 </a>
               </li>
