@@ -53,7 +53,7 @@ const AllTeacher = () => {
                 {teachers.map((teacher) => (
                   <TeacherRow
                     key={teacher._id}
-                    communication={teacher}
+                    teacher={teacher}
                     refetch={refetch}
                   />
                 ))}

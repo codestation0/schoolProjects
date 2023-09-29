@@ -1,13 +1,14 @@
 import axios from "axios";
-import toast from "react-hot-toast";
-import TeacherEditModal from "../../Components/Modal/TeacherEditModal";
-import DeleteModal from "../../Components/Modal/DeleteModal";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import DeleteModal from "../../Components/Modal/DeleteModal";
+import TeacherEditModal from "../../Components/Modal/TeacherEditModal";
 const TeacherRow = ({ teacher, refetch }) => {
   const { _id, name, image, phone } = teacher;
   const [isOpen, setIsOpen] = useState(false);
   const [isEditOpen, setEditIsOpen] = useState(false);
 
+  console.log(_id);
   const handleDelete = async (id) => {
     const res = await axios.delete(
       `${import.meta.env.VITE_BASE_URL}/delete-teacher/${id}`
