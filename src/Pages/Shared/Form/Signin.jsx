@@ -37,7 +37,7 @@ const Signin = () => {
 
     const data = await response.json();
     if (!data.error) {
-      navigate("/");
+      navigate("/dashboard");
     }
     setError(data.error);
     localStorage.setItem("email", formData.email);

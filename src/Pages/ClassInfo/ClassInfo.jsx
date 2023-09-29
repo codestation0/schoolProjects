@@ -21,17 +21,17 @@ const ClassInfo = () => {
         <div className="p-4">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="">
-              <tr>
-                <th className="px-6 py-3 bg-gray-50 text-left text-base leading-4 font-medium text-gray-500 uppercase tracking-wider">
+              <tr className="bg-zinc-500 text-zinc-50">
+                <th className="px-6 py-3 bg-gray-50 text-center text-base leading-4 font-medium text-gray-500 uppercase tracking-wider">
                   শ্রেণী
                 </th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-base leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 bg-gray-50 text-center text-base leading-4 font-medium text-gray-500 uppercase tracking-wider">
                   ছাত্র
                 </th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-base leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 bg-gray-50 text-center text-base leading-4 font-medium text-gray-500 uppercase tracking-wider">
                   ছাত্রী
                 </th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-base leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 bg-gray-50 text-center text-base leading-4 font-medium text-gray-500 uppercase tracking-wider ">
                   মোট শিক্ষার্থী
                 </th>
               </tr>

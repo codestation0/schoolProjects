@@ -46,6 +46,7 @@ import Signin from "../Pages/Shared/Form/Signin";
 import Signup from "../Pages/Shared/Form/Signup";
 import Teachers from "../Pages/Teachers/Teachers";
 import WelcomePage from "../Pages/WelcomePage";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -100,7 +101,11 @@ const router = createBrowserRouter([
   // ************************don't do this url private***********
   {
     path: "/dashboard",
-    element: <AdminDashboard />,
+    element: (
+      <PrivetRoute>
+        <AdminDashboard />
+      </PrivetRoute>
+    ),
     children: [
       {
         path: "/dashboard",
@@ -237,7 +242,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/signup",
+    path: "/sign-up",
     element: <Signup />,
   },
   {

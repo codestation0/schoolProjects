@@ -80,10 +80,10 @@ const AdminDashboard = () => {
                 <li className="">Home</li>
               </NavLink>
 
-              <div className="active pending hover:bg-zinc-400">
+              <div className="active pending hover:bg-zinc-800">
                 <li
                   onClick={() => setShowChild((prev) => !prev)}
-                  className="cursor-pointer"
+                  className="cursor-pointer py-1"
                 >
                   Add Teacher
                 </li>
@@ -98,21 +98,23 @@ const AdminDashboard = () => {
                   >
                     <li className="">Teacher</li>
                   </NavLink>
-                  <NavLink
-                    to={"/dashboard/add-headmaster"}
-                    className={({ isActive }) =>
-                      isActive ? "active" : "pending"
-                    }
-                  >
+                  {isDisabled ? (
                     <button
-                      disabled={isDisabled}
-                      className={`w-full h-full  ${
-                        isDisabled && "text-zinc-200  cursor-not-allowed"
-                      }`}
+                      disabled={true}
+                      className="text-zinc-600 cursor-not-allowed bg-zinc-300 w-full rounded-md py-1"
                     >
-                      Headmaster
+                      Headmaster [disabled]
                     </button>
-                  </NavLink>
+                  ) : (
+                    <NavLink
+                      to={"/dashboard/add-headmaster"}
+                      className={({ isActive }) =>
+                        isActive ? "active" : "pending"
+                      }
+                    >
+                      <li className={`w-full h-full`}>Headmaster</li>
+                    </NavLink>
+                  )}
                 </ul>
               </div>
 
@@ -190,21 +192,24 @@ const AdminDashboard = () => {
                   Add Headmaster Message
                 </li>
               </NavLink>
-              <NavLink
-                to={"/dashboard/add-sovapotirbani"}
-                className={({ isActive }) => (isActive ? "active" : "pending")}
-              >
-                <button
-                  disabled={disabledPresident}
-                  onClick={toggleShowChild}
-                  className={`${
-                    disabledPresident && "text-zinc-300 cursor-not-allowed"
-                  }`}
-                >
-                  Add President Message
-                </button>
-              </NavLink>
 
+              {disabledPresident ? (
+                <button
+                  disabled={true}
+                  className="text-zinc-600 cursor-not-allowed bg-zinc-300 w-full rounded-md py-1"
+                >
+                  Add President Message [disabled]
+                </button>
+              ) : (
+                <NavLink
+                  to={"/dashboard/add-sovapotirbani"}
+                  className={({ isActive }) =>
+                    isActive ? "active" : "pending"
+                  }
+                >
+                  <li onClick={toggleShowChild}>Add President Message</li>
+                </NavLink>
+              )}
               <NavLink
                 to={"/dashboard/add-instituteinfo"}
                 className={({ isActive }) => (isActive ? "active" : "pending")}
@@ -239,20 +244,32 @@ const AdminDashboard = () => {
                 </li>
               </NavLink>
 
-              <NavLink
-                to={"/dashboard/add-communicationinfo"}
-                className={({ isActive }) => (isActive ? "active" : "pending")}
-              >
+              {isShowCommunication ? (
                 <button
-                  disabled={isShowCommunication}
-                  onClick={toggleShowChild}
-                  className={`${
-                    isShowCommunication && "text-zinc-300 cursor-not-allowed"
-                  }`}
+                  disabled={true}
+                  className="text-zinc-600 cursor-not-allowed bg-zinc-300 w-full rounded-md py-1"
                 >
-                  Add Communication Information
+                  {" "}
+                  Add Communication Information [disabled]
                 </button>
-              </NavLink>
+              ) : (
+                <NavLink
+                  to={"/dashboard/add-communicationinfo"}
+                  className={({ isActive }) =>
+                    isActive ? "active" : "pending"
+                  }
+                >
+                  <button
+                    disabled={isShowCommunication}
+                    onClick={toggleShowChild}
+                    className={`${
+                      isShowCommunication && "text-zinc-300 cursor-not-allowed"
+                    }`}
+                  >
+                    Add Communication Information
+                  </button>
+                </NavLink>
+              )}
 
               <NavLink
                 to={"/dashboard/add-importantlinks"}
