@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 const Signin = () => {
   const navigate = useNavigate();
@@ -89,7 +89,7 @@ const Signin = () => {
           <small className="text-rose-500 mb-2 mt-1 block">{error}</small>
           <p className="text-[14px]">
             Don't have an account?{" "}
-            <Link to={"/signup"} className="text-primary-20 font-semibold">
+            <Link to={"/sign-up"} className="text-primary-20 font-semibold">
               Signup
             </Link>
           </p>

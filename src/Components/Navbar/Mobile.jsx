@@ -31,7 +31,7 @@ const Mobile = ({ showNav, handleNavbar }) => {
 
   return (
     <div
-      className={`min-h-screen w-[70%] bg-zinc-50 shadow-md fixed top-0 right-0 transition-all duration-500 md:hidden z-50  ${
+      className={`min-h-screen w-[70%] bg-zinc-50 shadow-md fixed top-0 right-0 transition-all duration-500 md:hidden z-[100]  ${
         showNav && "translate-x-[110%]"
       }`}
     >
