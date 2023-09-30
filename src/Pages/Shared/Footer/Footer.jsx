@@ -15,7 +15,7 @@ const Footer = () => {
       </Container>
       <p className="text-center py-4 bg-zinc-800 mt-10">
         &copy;Copyright {new Date().getFullYear()}. All rights reserved by
-        Redwan islam
+        TechAsync
       </p>
     </footer>
   );
